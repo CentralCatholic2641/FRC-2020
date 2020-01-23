@@ -13,8 +13,10 @@ import edu.wpi.first.wpilibj.XboxController;
 //import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.AddNext;
 //import frc.robot.commands.TimeCommand;
-import frc.robot.commands.addNext;
+
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -35,8 +37,8 @@ public class RobotContainer {
    */
   public RobotContainer() {
     //Will execute time command when the button is pressed
-    //xbutton.whenPressed( new TimeCommand(Constants.moveUntilSeconds, Constants.moveWithSpeed));
-    xbutton.whenPressed(new addNext());
+    xbutton.whenPressed( new AddNext());
+    
 
     // Configure the button bindings
 

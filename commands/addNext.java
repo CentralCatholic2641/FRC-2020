@@ -1,4 +1,5 @@
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -6,42 +7,20 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandGroupBase;
-import frc.robot.Robot;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
-public class addNext extends CommandGroupBase {
 
-  public addNext() {
-    addRequirements(Robot.objectDrivingSubsystem);
-    // Add Commands here:
-    // e.g. addSequential(new Command1());
-    // addSequential(new Command2());
-    // these will run in order.
-    addSequential(new Command1());
+// NOTE:  Consider using this command inline, rather than writing a subclass.  For more
+// information, see:
+// https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
+public class AddNext extends SequentialCommandGroup {
+  /**
+   * Creates a new addNext.
+   */
+  public AddNext() {
+    // Add your commands in the super() call, e.g.
+    // super(new FooCommand(), new BarCommand());
+    super(new TimeCommand(.5, .5), new TimeCommand(1.5, .75));
     
-// 
-    // To run multiple commands at the same time,
-    // use addParallel()
-    // e.g. addParallel(new Command1());
-    // addSequential(new Command2());
-    // Command1 and Command2 will run in parallel.
-
-    // A command group will require all of the subsystems that each member
-    // would require.
-    // e.g. if Command1 requires chassis, and Command2 requires arm,
-    // a CommandGroup containing them would require both the chassis and the
-    // arm.
   }
-
-  @Override
-  public void addCommands() {
-    // TODO Auto-generated method stub
-
-  }
-
-@Override
-public void addCommands(Command... commands) {
-	// TODO Auto-generated method stub
-	
 }
