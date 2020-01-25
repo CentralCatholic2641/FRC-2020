@@ -40,7 +40,8 @@ public class RobotContainer {
   public RobotContainer() {
     //Will execute time command when the button is pressed
     xbutton.whenPressed(new AddNext());
-    ybutton.whenPressed(new IntakeCommand(), true);
+    ybutton.whileHeld(new IntakeCommand());
+    
 
     // Configure the button bindings
 
