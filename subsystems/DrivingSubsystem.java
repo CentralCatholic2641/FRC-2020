@@ -30,9 +30,6 @@ public class DrivingSubsystem extends SubsystemBase {
   public WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(Constants.rightMotor2);
   public WPI_TalonSRX rightMotor3 = new WPI_TalonSRX(Constants.rightMotor3);
 
-  //Intake motor
-
-  public WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.yButtonPort);
   
   //Groups the right motors together
   SpeedControllerGroup rightGroup = new SpeedControllerGroup(rightMotor1, rightMotor2, rightMotor3);

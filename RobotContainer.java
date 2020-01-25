@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AddNext;
 //import frc.robot.commands.TimeCommand;
+import frc.robot.commands.IntakeCommand;
 
 
 
@@ -29,6 +30,7 @@ public class RobotContainer {
   // Makes a new joystick and button
   public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
   public Button xbutton = new JoystickButton(gamepad1, Constants.xButtonPort);
+  public Button ybutton = new JoystickButton(gamepad1, Constants.yButtonPort);
  
 
 
@@ -37,8 +39,8 @@ public class RobotContainer {
    */
   public RobotContainer() {
     //Will execute time command when the button is pressed
-    xbutton.whenPressed( new AddNext());
-    
+    xbutton.whenPressed(new AddNext());
+    ybutton.whenPressed(new IntakeCommand(), true);
 
     // Configure the button bindings
 

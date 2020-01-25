@@ -20,7 +20,7 @@ public final class Constants{
     public static double moveUntilSeconds = .85;
     public static double moveWithSpeed = .75;
 
-    //Talon COnfiguration
+    //Talon Configuration
 	public static int leftMotor1 = 4;
     public static int leftMotor2 = 5;
     public static int leftMotor3 = 6;
@@ -29,12 +29,16 @@ public final class Constants{
     public static int rightMotor3 = 3;
 
 
+    //Intake Motor Port
+    public static int intakeMotor = 7;
+
+
     //The GamepadCOntroller
     public static int gamepad1Port = 0;
     public static int joystickPort = 1;
     public static int joystickPort2 = 5;
     public static int xButtonPort = 1;
-    public static int yButtonPort = 2;
+    public static int yButtonPort = 6;
  
 
 
