@@ -20,7 +20,7 @@ public class IntakeSubsystem extends SubsystemBase {
    */
   
    //Intake motor
-   public WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.yButtonPort);
+   public WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.intakeMotor);
   
 
    public IntakeSubsystem() {
