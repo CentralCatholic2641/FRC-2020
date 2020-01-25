@@ -33,7 +33,6 @@ public class RobotContainer {
   public Button ybutton = new JoystickButton(gamepad1, Constants.yButtonPort);
  
 
-
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
