@@ -32,6 +32,7 @@ public final class Constants{
     //Intake Motor Port
     public static int intakeMotor = 7;
     
+    //Store Motor Input
     public static int storeMotor = 8;
     
     public static int shooterMotor = 9;
@@ -43,8 +44,8 @@ public final class Constants{
     public static int joystickPort2 = 5;
     public static int xButtonPort = 1;
     public static int yButtonPort = 6;
-    public static int zButtonPort = 7;
-    public static int sButtonPort = 8;
+    public static int zButtonPort = 2;
+    public static int sButtonPort = 3;
  
 
 
