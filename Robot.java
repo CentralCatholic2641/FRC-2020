@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
+import frc.robot.subsystems.StoreSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -24,7 +26,8 @@ public class Robot extends TimedRobot {
   public static DrivingSubsystem objectDrivingSubsystem= new DrivingSubsystem();
   public static RobotContainer objectRobotContainer;
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
-
+  public static StoreSubsystem objectStoreSubsystem = new StoreSubsystem();
+  public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
     
 
   @Override

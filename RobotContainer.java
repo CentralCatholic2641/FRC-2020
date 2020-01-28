@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AddNext;
 //import frc.robot.commands.TimeCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.StoreCommand;
 
 
 
@@ -31,8 +33,8 @@ public class RobotContainer {
   public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
   public Button xbutton = new JoystickButton(gamepad1, Constants.xButtonPort);
   public Button ybutton = new JoystickButton(gamepad1, Constants.yButtonPort);
- 
-
+  public Button zbutton = new JoystickButton(gamepad1, Constants.zButtonPort);
+  public Button sbutton = new JoystickButton(gamepad1, Constants.sButtonPort);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -40,8 +42,9 @@ public class RobotContainer {
   public RobotContainer() {
     //Will execute time command when the button is pressed
     xbutton.whenPressed(new AddNext());
-    ybutton.whileHeld(new IntakeCommand());
-    
+    ybutton.whenActive(new IntakeCommand(), true);
+    zbutton.whenActive(new StoreCommand(), true);
+    sbutton.whenActive(new ShooterCommand(), true);
 
     // Configure the button bindings
 

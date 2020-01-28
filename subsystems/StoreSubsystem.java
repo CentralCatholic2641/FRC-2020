@@ -11,31 +11,23 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-// import frc.robot.commands.IntakeCommand;
 
-
-public class IntakeSubsystem extends SubsystemBase {
+public class StoreSubsystem extends SubsystemBase {
   /**
-   * Creates a new IntakeSubsystem.
+   * Creates a new ShooterSubsystem.
    */
+  public WPI_TalonSRX storeMotor = new WPI_TalonSRX(Constants.storeMotor);
   
-   //Intake motor
-   public WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.intakeMotor);
   
-
-   public IntakeSubsystem() {
+  
+  public StoreSubsystem() {
 
   }
-
-   
-  public void DriveIntakeMotor(double speed){
-    intakeMotor.set(speed);
+  public void DriveStoreMotor(double speed){
+    storeMotor.set(speed);
   }
-
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
 }
