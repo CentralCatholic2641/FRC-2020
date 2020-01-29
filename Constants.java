@@ -40,7 +40,17 @@ public final class Constants{
     public static int xButtonPort = 1;
     public static int yButtonPort = 6;
  
+    //PID Constants
 
+    public static double kP = 0;
+    public static double kI = 0;
+    public static double kD = 0;
+    public static double kF = 0;
+
+    //Encoder
+
+    public static int leftEncoder = 4;
+    public static int rightEncoder = 2;
 
 
 
