@@ -33,12 +33,22 @@ public final class Constants{
     public static int intakeMotor = 7;
 
 
+    //Store Motor Input
+    public static int storeMotor = 8;
+
+    
+    //Shooter Motor Input
+    public static int shooterMotor = 9;
+
+
     //The GamepadCOntroller
     public static int gamepad1Port = 0;
     public static int joystickPort = 1;
     public static int joystickPort2 = 5;
     public static int xButtonPort = 1;
     public static int yButtonPort = 6;
+    public static int zButtonPort = 2;
+    public static int sButtonPort = 3;
  
     //PID Constants
 
