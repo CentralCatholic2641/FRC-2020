@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -43,6 +44,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Creates a new robot container
     objectRobotContainer = new RobotContainer();
+    SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition());
     
   }
 
