@@ -16,11 +16,11 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants{
-    //for timed Robot
+    // for timed Robot
     public static double moveUntilSeconds = .85;
     public static double moveWithSpeed = .75;
 
-    //Talon Configuration
+    // Talon Configuration
 	public static int leftMotor1 = 4;
     public static int leftMotor2 = 5;
     public static int leftMotor3 = 6;
@@ -29,11 +29,15 @@ public final class Constants{
     public static int rightMotor3 = 3;
 
 
-    //Intake Motor Port
+    // Intake motor port
     public static int intakeMotor = 7;
-    //Store Motor Input
+
+    // Store motor port
     public static int storeMotor = 8;
     
+    // Climber motor port
+
+    // Shooter motor port
     public static int shooterMotor = 9;
 
 
