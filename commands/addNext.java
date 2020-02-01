@@ -21,6 +21,5 @@ public class AddNext extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(new TimeCommand(.5, .5), new TimeCommand(1.5, .75));
-    
   }
 }

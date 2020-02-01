@@ -8,24 +8,21 @@
 package frc.robot.subsystems;
 
 //import com.ctre.phoenix.motorcontrol.TalonFXSensorCollection;
-
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import frc.robot.Constants;
 import frc.robot.Robot;
-
-
 
 public class TurnToAngleSubsystem extends PIDSubsystem {
   /**
    * Creates a new TurnToAngleSubsystem.
    */  
 
-   
   public TurnToAngleSubsystem() {
     super(
-        // The PIDController used by the subsystem
-        new PIDController(Constants.kP, Constants.kI, Constants.kD));
+      // The PIDController used by the subsystem
+      new PIDController(Constants.kP, Constants.kI, Constants.kD)
+    );
   }
 
   @Override
@@ -37,7 +34,5 @@ public class TurnToAngleSubsystem extends PIDSubsystem {
   public double getMeasurement() {
     // Return the process variable measurement here
     return Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition();
-    
-    
   }
 }

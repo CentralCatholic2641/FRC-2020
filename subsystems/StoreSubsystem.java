@@ -8,7 +8,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -17,9 +16,7 @@ public class StoreSubsystem extends SubsystemBase {
    * Creates a new ShooterSubsystem.
    */
   public WPI_TalonSRX storeMotor = new WPI_TalonSRX(Constants.storeMotor);
-  
-  
-  
+
   public StoreSubsystem() {
 
   }

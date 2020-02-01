@@ -19,16 +19,17 @@ public class TurnToAngleCommand extends PIDCommand {
    */
   public TurnToAngleCommand() {
     super(
-        // The controller that the command will use
-        new PIDController(0, 0, 0),
-        // This should return the measurement
-        () -> 0,
-        // This should return the setpoint (can also be a constant)
-        () -> 0,
-        // This uses the output
-        output -> {
-          // Use the output here
-        });
+      // The controller that the command will use
+      new PIDController(0, 0, 0),
+      // This should return the measurement
+      () -> 0,
+      // This should return the setpoint (can also be a constant)
+      () -> 0,
+      // This uses the output
+      output -> {
+        // Use the output here
+      }
+    );
     // Use addRequirements() here to declare subsystem dependencies.
     // Configure additional PID options by calling `getController` here.
   }

@@ -47,7 +47,7 @@ public class RobotContainer {
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    //Will execute time command when the button is pressed
+    // Will execute time command when the button is pressed
     xbutton.whenPressed(new AddNext());
     ybutton.whenActive(new IntakeCommand(), true);
     zbutton.whenActive(new StoreCommand(), true);
@@ -58,8 +58,6 @@ public class RobotContainer {
     wheelRightClimberButton.whenActive(new WheelClimberCommand(1), true);
 
     // Configure the button bindings
-
-    
     configureButtonBindings();
   }
 
@@ -70,8 +68,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-  }
 
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

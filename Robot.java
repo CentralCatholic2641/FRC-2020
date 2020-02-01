@@ -42,8 +42,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Creates a new robot container
     objectRobotContainer = new RobotContainer();
-    SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition());
-    
+    SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition()); 
   }
 
   /**
@@ -67,10 +66,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
+
   }
 
   @Override
   public void disabledPeriodic() {
+
   }
 
   /**
@@ -78,8 +79,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-  
-
     // schedule the autonomous command (example)
     //if (m_autonomousCommand != null) {
      // m_autonomousCommand.schedule();
@@ -91,6 +90,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+
   }
 
   @Override
@@ -109,6 +109,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
   }
 
   @Override
@@ -122,5 +123,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
+    
   }
 }

@@ -20,34 +20,29 @@ public class DriveCommand extends CommandBase {
   public DriveCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectDrivingSubsystem);
-
-
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     
-    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-    //Gets raw axis from each joystick and multiplies it by a constant
+    // Gets raw axis from each joystick and multiplies it by a constant
     double y_stick1 = - .75 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort);
     double y_stick2 = - .75 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort2);
     
-    //passes the stick values into teleopdrive
+    // passes the stick values into teleopdrive
     Robot.objectDrivingSubsystem.teleopDrive(y_stick1, y_stick2);
-    
-  
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    
   }
 
   // Returns true when the command should end.

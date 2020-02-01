@@ -8,7 +8,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -17,12 +16,15 @@ public class ShooterSubsystem extends SubsystemBase {
    * Creates a new ShooterSubsystem.
    */
   public WPI_TalonSRX shooterMotor = new WPI_TalonSRX(Constants.shooterMotor);
+
   public ShooterSubsystem() {
 
   }
+  
   public void DriveShooterMotor(double speed){
     shooterMotor.set(speed);
   }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
