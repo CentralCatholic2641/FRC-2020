@@ -32,12 +32,12 @@ public final class Constants{
     // Intake motor port
     public static int intakeMotor = 7;
 
-    // Store motor port
-    public static int storeMotor = 8;
-    
-    // Climber motor port
 
-    // Shooter motor port
+    //Store Motor Input
+    public static int storeMotor = 8;
+
+    
+    //Shooter Motor Input
     public static int shooterMotor = 9;
 
 
@@ -50,7 +50,17 @@ public final class Constants{
     public static int zButtonPort = 2;
     public static int sButtonPort = 3;
  
+    //PID Constants
 
+    public static double kP = 0;
+    public static double kI = 0;
+    public static double kD = 0;
+    public static double kF = 0;
+
+    //Encoder
+
+    public static int leftEncoder = 4;
+    public static int rightEncoder = 2;
 
 
 

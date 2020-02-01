@@ -8,12 +8,17 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-//import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+
+import frc.robot.subsystems.TurnToAngleSubsystem;
+
+
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -26,14 +31,20 @@ public class Robot extends TimedRobot {
   public static DrivingSubsystem objectDrivingSubsystem= new DrivingSubsystem();
   public static RobotContainer objectRobotContainer;
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
+
+  public static TurnToAngleSubsystem objectNavigationSubsystem = new TurnToAngleSubsystem();
+
+
   public static StoreSubsystem objectStoreSubsystem = new StoreSubsystem();
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
+
     
 
   @Override
   public void robotInit() {
     // Creates a new robot container
     objectRobotContainer = new RobotContainer();
+    SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition());
     
   }
 
