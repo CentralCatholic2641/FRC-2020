@@ -21,6 +21,7 @@ public final class Constants {
     public static double moveUntilSeconds = .85;
     public static double moveWithSpeed = .75;
 
+
     // Talon Configuration
 	public static int leftMotor1 = 4;
     public static int leftMotor2 = 5;
@@ -42,24 +43,44 @@ public final class Constants {
     public static int shooterMotor = 9;
 
 
-    // Gamepad controller
-    public static int gamepad1Port = 0;
-    public static int joystickPort = 1;
-    public static int joystickPort2 = 5;
-    public static int xButtonPort = 1;
-    public static int yButtonPort = 6;
-    public static int zButtonPort = 2;
-    public static int sButtonPort = 3;
- 
-    // PID constants
+    // Climber motor ports
+    public static int winchMotor = 0;
+    public static int wheelMotor = 0;
+    
 
+    // Gamepad1 controller
+    public static int gamepad1Port = 0;
+    public static int joystickPort = 1; // left joystick
+    public static int joystickPort2 = 5; // right joystick
+    public static int addNextButtonPort = 1; // X button
+    
+    
+    // Gamepad2 controller
+    public static int gamepad2Port = 1;
+    public static int shooterButtonPort = 3; // right trigger
+    public static int intakeButtonPort = 6; // Y button
+    public static int storeButtonPort = 2; // Z button
+    public static int retractClimberButtonPort = 1; // A button
+    public static int extendClimberButtonPort = 4; // Y button
+    public static int wheelLeftClimberButtonPort = 2; // left trigger
+    public static int wheelRightClimberButtonPort = 3; // right trigger
+    
+
+    // Pneumatic ports
+    public static int climberPneumaticPort1 = 0;
+    public static int climberPneumaticPort2 = 0;
+    public static int spinnerPnuematicPort1 = 0;
+    public static int spinnerPnuematicPort2 = 0;
+    
+
+    // PID constants
     public static double kP = 0;
     public static double kI = 0;
     public static double kD = 0;
     public static double kF = 0;
 
-    // Encoder
 
+    // Encoder
     public static int leftEncoder = 4;
     public static int rightEncoder = 2;
 

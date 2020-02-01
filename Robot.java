@@ -10,12 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
-
 import frc.robot.subsystems.TurnToAngleSubsystem;
-
-
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
 
@@ -28,15 +27,14 @@ import frc.robot.subsystems.StoreSubsystem;
  */
 public class Robot extends TimedRobot {
   //Creates a new driving subsystem and declares a robot container
-  public static DrivingSubsystem objectDrivingSubsystem= new DrivingSubsystem();
   public static RobotContainer objectRobotContainer;
+
+  public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
-
   public static TurnToAngleSubsystem objectNavigationSubsystem = new TurnToAngleSubsystem();
-
-
   public static StoreSubsystem objectStoreSubsystem = new StoreSubsystem();
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
+  public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
 
     
 

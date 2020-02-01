@@ -14,11 +14,13 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AddNext;
+import frc.robot.commands.ExtendClimberCommand;
+import frc.robot.commands.RetractClimberCommand;
+import frc.robot.commands.WheelClimberCommand;
 //import frc.robot.commands.TimeCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.StoreCommand;
-
 
 
 /**
@@ -31,10 +33,15 @@ public class RobotContainer {
   
   // Makes a new joystick and button
   public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
-  public Button xbutton = new JoystickButton(gamepad1, Constants.xButtonPort);
-  public Button ybutton = new JoystickButton(gamepad1, Constants.yButtonPort);
-  public Button zbutton = new JoystickButton(gamepad1, Constants.zButtonPort);
-  public Button sbutton = new JoystickButton(gamepad1, Constants.sButtonPort);
+  public Joystick gamepad2 = new Joystick(Constants.gamepad2Port);
+  public Button xbutton = new JoystickButton(gamepad1, Constants.addNextButtonPort);
+  public Button ybutton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
+  public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
+  public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
+  public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
+  public Button extendClimberButton = new JoystickButton(gamepad2, Constants.extendClimberButtonPort);
+  public Button wheelLeftClimberButton = new JoystickButton(gamepad2, Constants.wheelLeftClimberButtonPort);
+  public Button wheelRightClimberButton = new JoystickButton(gamepad2, Constants.wheelRightClimberButtonPort);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -45,6 +52,10 @@ public class RobotContainer {
     ybutton.whenActive(new IntakeCommand(), true);
     zbutton.whenActive(new StoreCommand(), true);
     sbutton.whenActive(new ShooterCommand(), true);
+    retractClimberButton.whenActive(new RetractClimberCommand(), true);
+    extendClimberButton.whenActive(new ExtendClimberCommand(), true);
+    wheelLeftClimberButton.whenActive(new WheelClimberCommand(-1), true);
+    wheelRightClimberButton.whenActive(new WheelClimberCommand(1), true);
 
     // Configure the button bindings
 
