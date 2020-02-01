@@ -15,7 +15,8 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants{
+public final class Constants {
+
     // for timed Robot
     public static double moveUntilSeconds = .85;
     public static double moveWithSpeed = .75;
@@ -33,15 +34,15 @@ public final class Constants{
     public static int intakeMotor = 7;
 
 
-    //Store Motor Input
+    // Store motor port
     public static int storeMotor = 8;
 
     
-    //Shooter Motor Input
+    // Shooter motor port
     public static int shooterMotor = 9;
 
 
-    //The GamepadCOntroller
+    // Gamepad controller
     public static int gamepad1Port = 0;
     public static int joystickPort = 1;
     public static int joystickPort2 = 5;
@@ -50,19 +51,16 @@ public final class Constants{
     public static int zButtonPort = 2;
     public static int sButtonPort = 3;
  
-    //PID Constants
+    // PID constants
 
     public static double kP = 0;
     public static double kI = 0;
     public static double kD = 0;
     public static double kF = 0;
 
-    //Encoder
+    // Encoder
 
     public static int leftEncoder = 4;
     public static int rightEncoder = 2;
-
-
-
 
 }
