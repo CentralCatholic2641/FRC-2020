@@ -28,7 +28,7 @@ public class SpinningCommand extends CommandBase {
   @Override
   public void execute() {
     Robot.objectSpinningSubsystem.extendSpinnerMotor();
-    Robot.objectSpinningSubsystem.DriveSpinningMotor(.9);
+    Robot.objectSpinningSubsystem.DriveSpinningMotor(.5);
   }
 
   // Called once the command ends or is interrupted.
