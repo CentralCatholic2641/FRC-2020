@@ -47,13 +47,13 @@ public class RobotContainer {
   public RobotContainer() {
     // Will execute time command when the button is pressed
     xbutton.whenPressed(new AddNext());
-    ybutton.whenActive(new IntakeCommand(), true);
-    zbutton.whenActive(new StoreCommand(), true);
-    sbutton.whenActive(new ShooterCommand(), true);
-    retractClimberButton.whenActive(new RetractClimberCommand(), true);
-    extendClimberButton.whenActive(new ExtendClimberCommand(), true);
-    wheelLeftClimberButton.whenActive(new WheelClimberCommand(-1), true);
-    wheelRightClimberButton.whenActive(new WheelClimberCommand(1), true);
+    ybutton.whileHeld(new IntakeCommand(), true);
+    zbutton.whileHeld(new StoreCommand(), true);
+    sbutton.whileHeld(new ShooterCommand(), true);
+    retractClimberButton.whileHeld(new RetractClimberCommand(), true);
+    extendClimberButton.whileHeld(new ExtendClimberCommand(), true);
+    wheelLeftClimberButton.whileHeld(new WheelClimberCommand(-1), true);
+    wheelRightClimberButton.whileHeld(new WheelClimberCommand(1), true);
 
     // Configure the button bindings
     configureButtonBindings();

@@ -28,7 +28,7 @@ public class StoreCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.objectStoreSubsystem.DriveStoreMotor(10);
+    Robot.objectStoreSubsystem.DriveStoreMotor(.9);
   }
 
   // Called once the command ends or is interrupted.
