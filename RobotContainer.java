@@ -18,6 +18,7 @@ import frc.robot.commands.RetractClimberCommand;
 import frc.robot.commands.WheelClimberCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.SpinningCommand;
 import frc.robot.commands.StoreCommand;
 
 
@@ -36,6 +37,7 @@ public class RobotContainer {
   public Button ybutton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
   public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
   public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
+  public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinningMotor);
   public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
   public Button extendClimberButton = new JoystickButton(gamepad2, Constants.extendClimberButtonPort);
   public Button wheelLeftClimberButton = new JoystickButton(gamepad2, Constants.wheelLeftClimberButtonPort);
@@ -47,13 +49,15 @@ public class RobotContainer {
   public RobotContainer() {
     // Will execute time command when the button is pressed
     xbutton.whenPressed(new AddNext());
-    ybutton.whenActive(new IntakeCommand(), true);
+    ybutton.whileHeld(new IntakeCommand(), true);
     zbutton.whenActive(new StoreCommand(), true);
     sbutton.whenActive(new ShooterCommand(), true);
+    spinnerButton.whileHeld(new SpinningCommand(), true);
     retractClimberButton.whenActive(new RetractClimberCommand(), true);
     extendClimberButton.whenActive(new ExtendClimberCommand(), true);
     wheelLeftClimberButton.whenActive(new WheelClimberCommand(-1), true);
     wheelRightClimberButton.whenActive(new WheelClimberCommand(1), true);
+    
 
     // Configure the button bindings
     configureButtonBindings();
