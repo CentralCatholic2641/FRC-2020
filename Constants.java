@@ -57,6 +57,7 @@ public final class Constants {
     public static int joystickPort = 1; // left joystick
     public static int joystickPort2 = 5; // right joystick
     public static int addNextButtonPort = 1; // X button
+    public static int spinnerButton = 0;
     
     
     // Gamepad2 controller

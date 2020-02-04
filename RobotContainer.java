@@ -37,7 +37,7 @@ public class RobotContainer {
   public Button ybutton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
   public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
   public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
-  public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinningMotor);
+  public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButton);
   public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
   public Button extendClimberButton = new JoystickButton(gamepad2, Constants.extendClimberButtonPort);
   public Button wheelLeftClimberButton = new JoystickButton(gamepad2, Constants.wheelLeftClimberButtonPort);
