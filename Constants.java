@@ -46,6 +46,10 @@ public final class Constants {
     // Climber motor ports
     public static int winchMotor = 0;
     public static int wheelMotor = 0;
+
+    //Spinning motor port
+
+    public static int spinningMotor = 0;
     
 
     // Gamepad1 controller
@@ -78,6 +82,8 @@ public final class Constants {
     public static double kI = 0;
     public static double kD = 0;
     public static double kF = 0;
+    public static int wheelDiameter = 6;
+    public static int percentTolerance = 15;
 
 
     // Encoder

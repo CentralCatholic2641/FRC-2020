@@ -19,10 +19,8 @@ public class TurnToAngleSubsystem extends PIDSubsystem {
    */  
 
   public TurnToAngleSubsystem() {
-    super(
-      // The PIDController used by the subsystem
-      new PIDController(Constants.kP, Constants.kI, Constants.kD)
-    );
+    super(new PIDController(Constants.kP, Constants.kI, Constants.kD));
+    getController().setTolerance(Constants.percentTolerance);
   }
 
   @Override
@@ -35,4 +33,13 @@ public class TurnToAngleSubsystem extends PIDSubsystem {
     // Return the process variable measurement here
     return Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition();
   }
+
+  public boolean atSetPoint() {
+    return m_controller.atSetpoint();
+  }
+
+  public void stopMotors () {
+    Robot.objectDrivingSubsystem.teleopDrive(0, 0);
+  }
+
 }

@@ -17,7 +17,7 @@ public class TurnToAngleCommand extends PIDCommand {
   /**
    * Creates a new TurnToAngleCommand.
    */
-  public TurnToAngleCommand() {
+  public TurnToAngleCommand(double targetAngle) {
     super(
       // The controller that the command will use
       new PIDController(0, 0, 0),
@@ -37,6 +37,6 @@ public class TurnToAngleCommand extends PIDCommand {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return getController().atSetpoint();
   }
 }
