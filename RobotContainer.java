@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AddNext;
+import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExtendClimberCommand;
 import frc.robot.commands.RetractClimberCommand;
 import frc.robot.commands.WheelClimberCommand;
@@ -37,7 +38,7 @@ public class RobotContainer {
   public Button ybutton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
   public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
   public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
-  public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButton);
+  public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButtonPort);
   public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
   public Button extendClimberButton = new JoystickButton(gamepad2, Constants.extendClimberButtonPort);
   public Button wheelLeftClimberButton = new JoystickButton(gamepad2, Constants.wheelLeftClimberButtonPort);
@@ -48,6 +49,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Will execute time command when the button is pressed
+    new DriveCommand();
     xbutton.whenPressed(new AddNext());
     ybutton.whileHeld(new IntakeCommand(), true);
     zbutton.whileHeld(new StoreCommand(), true);

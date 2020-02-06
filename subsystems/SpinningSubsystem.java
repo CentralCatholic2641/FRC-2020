@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+//import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -20,17 +20,17 @@ public class SpinningSubsystem extends SubsystemBase {
   public WPI_TalonSRX spinningMotor = new WPI_TalonSRX(Constants.spinningMotor);
 
 
-  public DoubleSolenoid spinngingPiston = new DoubleSolenoid(Constants.spinnerPnuematicPort1, Constants.spinnerPnuematicPort2);
+  //public DoubleSolenoid spinngingPiston = new DoubleSolenoid(Constants.spinnerPnuematicPort1, Constants.spinnerPnuematicPort2);
   public SpinningSubsystem() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   public void extendSpinnerMotor(){
-    spinngingPiston.set(DoubleSolenoid.Value.kForward);
+    //spinngingPiston.set(DoubleSolenoid.Value.kForward);
   }
 
   public void retractSpinnerMotor(){
-    spinngingPiston.set(DoubleSolenoid.Value.kOff);
+    //spinngingPiston.set(DoubleSolenoid.Value.kOff);
   }
 
   public void DriveSpinningMotor(double speed){

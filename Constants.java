@@ -23,20 +23,27 @@ public final class Constants {
 
 
     // Talon Configuration
-	public static int leftMotor1 = 4;
-    public static int leftMotor2 = 5;
-    public static int leftMotor3 = 6;
-    public static int rightMotor1 = 1;
-    public static int rightMotor2 = 2;
-    public static int rightMotor3 = 3;
+	public static int leftMotor1 = 1;
+    public static int leftMotor2 = 2;
+    public static int leftMotor3 = 3;
+    public static int rightMotor1 = 4;
+    public static int rightMotor2 = 5;
+    public static int rightMotor3 = 6;
 
 
     // Intake motor port
-    public static int intakeMotor = 7;
+    public static int intakeMotor = 8;
+
+    //Compressor port
+    public static int compressorPort = 0;
+
+    //Intake speed
+    public static double intakeSpeed = -0.35;
+    public static double shooterSpeed = 0.55;
 
 
     // Store motor port
-    public static int storeMotor = 8;
+    public static int storeMotor = 10;
 
     
     // Shooter motor port
@@ -49,26 +56,27 @@ public final class Constants {
 
     //Spinning motor port
 
-    public static int spinningMotor = 0;
+    public static int spinningMotor = 7;
     
 
     // Gamepad1 controller
     public static int gamepad1Port = 0;
     public static int joystickPort = 1; // left joystick
     public static int joystickPort2 = 5; // right joystick
-    public static int addNextButtonPort = 1; // X button
-    public static int spinnerButton = 0;
+    public static int addNextButtonPort = 0; // X button
+    
     
     
     // Gamepad2 controller
     public static int gamepad2Port = 1;
-    public static int shooterButtonPort = 3; // right trigger
-    public static int intakeButtonPort = 6; // Y button
-    public static int storeButtonPort = 2; // Z button
-    public static int retractClimberButtonPort = 1; // A button
-    public static int extendClimberButtonPort = 4; // Y button
-    public static int wheelLeftClimberButtonPort = 2; // left trigger
-    public static int wheelRightClimberButtonPort = 3; // right trigger
+    public static int shooterButtonPort = 2; // right trigger
+    public static int intakeButtonPort = 1; // Y button
+    public static int storeButtonPort = 1; // Z button
+    public static int retractClimberButtonPort = 0; // A button
+    public static int extendClimberButtonPort = 0; // Y button
+    public static int wheelLeftClimberButtonPort = 0; // left trigger
+    public static int wheelRightClimberButtonPort = 0; // right trigger
+    public static int spinnerButtonPort = 3;
     
 
     // Pneumatic ports

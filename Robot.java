@@ -19,6 +19,7 @@ import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
 import frc.robot.subsystems.TurnToAngleSubsystem;
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.Compressor;
 
 
 
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
+  public static Compressor compressor = new Compressor(Constants.compressorPort);
   
 
     
@@ -52,7 +54,14 @@ public class Robot extends TimedRobot {
     objectRobotContainer = new RobotContainer();
     SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition()); 
     SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
-    
+    SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
+
+    if (compressor.getPressureSwitchValue() == true){
+        compressor.start();
+    }
+    else{
+      compressor.stop();
+    }
     
     
   }
