@@ -20,8 +20,10 @@ import frc.robot.subsystems.StoreSubsystem;
 import frc.robot.subsystems.TurnToAngleSubsystem;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.cscore.VideoSource;
-import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+// import edu.wpi.cscore.VideoSource;
+import edu.wpi.first.cameraserver.CameraServer;
 
 
 
@@ -44,6 +46,8 @@ public class Robot extends TimedRobot {
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
+  public UsbCamera camera1;
+  public CvSource outputStream1;
   
 
     
@@ -56,7 +60,21 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition()); 
     SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
-    compressor.start();
+    compressor.start(); 
+    
+    //We might need to make the camera a subsystem or define it in the robot container
+    //Also THis code is somewhat redundant... I am just seeing what is possible
+    //-Justin
+    //CameraServer.getInstance().startAutomaticCapture("camera",0);
+    camera1 = CameraServer.getInstance().startAutomaticCapture("camera",0);
+    //camera1.setResolution(1024,768);
+    //I am thinking that this will create an output stream that we can store as a matrix of numbers
+    //outputStream1 = CameraServer.getInstance().putVideo("camera", 1024,768);
+
+
+
+    
+
   }
 
   /**
@@ -73,6 +91,8 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    
+    
   }
 
   /**

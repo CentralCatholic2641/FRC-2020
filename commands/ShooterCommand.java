@@ -15,21 +15,24 @@ public class ShooterCommand extends CommandBase {
   /**
    * Creates a new ShooterCommand.
    */
-  public ShooterCommand() {
+  float inputFromButton;
+
+  public ShooterCommand(float direction) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectShooterSubsystem);
+    inputFromButton = direction;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    //Robot.objectShooterSubsystem.DriveShooterMotor(inputFromButton*Constants.shooterSpeed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.objectShooterSubsystem.DriveShooterMotor(Constants.shooterSpeed);
+    Robot.objectShooterSubsystem.DriveShooterMotor(-inputFromButton*Constants.shooterSpeed);
   }
 
   // Called once the command ends or is interrupted.

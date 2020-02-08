@@ -38,6 +38,7 @@ public class RobotContainer {
   public Button ybutton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
   public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
   public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
+  public Button reverseShooterButton = new JoystickButton(gamepad2, Constants.reverseShooterButtonPort);
   public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButtonPort);
   public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
   public Button extendClimberButton = new JoystickButton(gamepad2, Constants.extendClimberButtonPort);
@@ -53,7 +54,8 @@ public class RobotContainer {
     xbutton.whenPressed(new AddNext());
     ybutton.whileHeld(new IntakeCommand(), true);
     zbutton.whileHeld(new StoreCommand(), true);
-    sbutton.whileHeld(new ShooterCommand(), true);
+    sbutton.whileHeld(new ShooterCommand(1), true);
+    reverseShooterButton.whileHeld(new ShooterCommand(-1), true);
     spinnerButton.whileHeld(new SpinningCommand(), true);
     retractClimberButton.whileHeld(new RetractClimberCommand(), true);
     extendClimberButton.whileHeld(new ExtendClimberCommand(), true);
