@@ -72,18 +72,18 @@ public final class Constants {
     public static int shooterButtonPort = 2; // right trigger
     public static int intakeButtonPort = 1; // Y button
     public static int storeButtonPort = 1; // Z button
-    public static int retractClimberButtonPort = 0; // A button
-    public static int extendClimberButtonPort = 0; // Y button
+    public static int retractClimberButtonPort = 3; // A button
+    public static int extendClimberButtonPort = 4; // Y button
     public static int wheelLeftClimberButtonPort = 0; // left trigger
     public static int wheelRightClimberButtonPort = 0; // right trigger
-    public static int spinnerButtonPort = 3;
+    public static int spinnerButtonPort = 0;
     
 
     // Pneumatic ports
-    public static int climberPneumaticPort1 = 0;
-    public static int climberPneumaticPort2 = 0;
+    public static int climberPneumaticPort1 = 2;
+    public static int climberPneumaticPort2 = 3;
     public static int spinnerPnuematicPort1 = 0;
-    public static int spinnerPnuematicPort2 = 0;
+    public static int spinnerPnuematicPort2 = 1;
     
 
     // PID constants

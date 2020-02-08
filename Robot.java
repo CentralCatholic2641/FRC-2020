@@ -55,13 +55,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition()); 
     SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
-
-    if (compressor.getPressureSwitchValue() == true){
-        compressor.start();
-    }
-    else{
-      compressor.stop();
-    }
+    compressor.start();
     
     
   }
