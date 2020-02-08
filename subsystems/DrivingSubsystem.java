@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -38,6 +39,7 @@ public class DrivingSubsystem extends SubsystemBase {
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
   
 public DrivingSubsystem() {
+  CameraServer.getInstance().startAutomaticCapture("camera",0);
 
   }
 public void teleopDrive(double yMove1, double yMove2){

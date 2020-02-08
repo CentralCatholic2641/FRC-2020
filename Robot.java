@@ -20,7 +20,8 @@ import frc.robot.subsystems.StoreSubsystem;
 import frc.robot.subsystems.TurnToAngleSubsystem;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
-
+import edu.wpi.cscore.VideoSource;
+import edu.wpi.first.wpilibj.CameraServer;
 
 
 
@@ -56,8 +57,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
     compressor.start();
-    
-    
   }
 
   /**

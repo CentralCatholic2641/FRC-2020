@@ -37,4 +37,5 @@ public class SpinningSubsystem extends SubsystemBase {
   public void DriveSpinningMotor(double speed){
     spinningMotor.set(speed);
   }
+  
 }
