@@ -39,8 +39,8 @@ public final class Constants {
 
     //Intake speed
     public static double intakeSpeed = -0.35;
-    public static double shooterSpeed = 0.25;
-    public static double StoreSpeed = 0.25;
+    public static double shooterSpeed = 0.35;
+    public static double StoreSpeed = 0.35;
 
 
     // Store motor port
@@ -70,8 +70,8 @@ public final class Constants {
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
-    public static int shooterButtonPort = 2; // 
-    public static int reverseShooterButtonPort = 6; //RB?
+    public static int shooterButtonPort = 6; // 
+    public static int reverseShooterButtonPort = 2; //RB?
     public static int intakeButtonPort = 1; // 
     public static int storeButtonPort = 1; // 
     public static int retractClimberButtonPort = 3; // 
@@ -89,17 +89,20 @@ public final class Constants {
     
 
     // PID constants
-    public static double kP = 0;
+    public static double kP = 0.1;
     public static double kI = 0;
     public static double kD = 0;
     public static double kF = 0;
     public static int wheelDiameter = 6;
     public static int percentTolerance = 15;
+    public static double oneRotation = 4098.85;
+    public static double setpoint = 10.0;
+    
 
 
     // Encoder
-    public static int leftEncoder = 4;
-    public static int rightEncoder = 2;
+    public static int leftEncoder = 12;
+    public static int rightEncoder = 11;
 
     
     //Camera Port

@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.DriveDistanceSubsystem;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
-import frc.robot.subsystems.TurnToAngleSubsystem;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.cscore.CvSource;
@@ -40,14 +40,17 @@ public class Robot extends TimedRobot {
 
   public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
-  public static TurnToAngleSubsystem objectNavigationSubsystem = new TurnToAngleSubsystem();
   public static StoreSubsystem objectStoreSubsystem = new StoreSubsystem();
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
+  public static DriveDistanceSubsystem objeDistanceSubsystem = new DriveDistanceSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
+public static Object objectDriveDistanceSubsystem;
   public UsbCamera camera1;
   public CvSource outputStream1;
+
+  
   
 
     
@@ -57,10 +60,13 @@ public class Robot extends TimedRobot {
     // Creates a new robot container
     ahrs = new AHRS(SPI.Port.kMXP);
     objectRobotContainer = new RobotContainer();
-    SmartDashboard.putNumber("Encoder Value is: ", Robot.objectDrivingSubsystem.rightMotor2.getSelectedSensorPosition()); 
     SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
     compressor.start(); 
+    SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
+    SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
+    
+    
     
     //We might need to make the camera a subsystem or define it in the robot container
     //Also THis code is somewhat redundant... I am just seeing what is possible
@@ -70,20 +76,8 @@ public class Robot extends TimedRobot {
     //camera1.setResolution(1024,768);
     //I am thinking that this will create an output stream that we can store as a matrix of numbers
     //outputStream1 = CameraServer.getInstance().putVideo("camera", 1024,768);
-
-
-
-    
-
   }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use this for items like
-   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
-   */
   @Override
   public void robotPeriodic() {
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
@@ -113,15 +107,16 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    // schedule the autonomous command (example)
-    //if (m_autonomousCommand != null) {
-     // m_autonomousCommand.schedule();
-   // }
+    Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
+    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
+  
   }
 
   /**
    * This function is called periodically during autonomous.
    */
+
+
   @Override
   public void autonomousPeriodic() {
 

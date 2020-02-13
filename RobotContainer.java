@@ -61,6 +61,7 @@ public class RobotContainer {
     extendClimberButton.whileHeld(new ExtendClimberCommand(), true);
     wheelLeftClimberButton.whileHeld(new WheelClimberCommand(-1), true);
     wheelRightClimberButton.whileHeld(new WheelClimberCommand(1), true);
+    
 
     // Configure the button bindings
     configureButtonBindings();

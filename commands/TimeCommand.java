@@ -40,6 +40,7 @@ public class TimeCommand extends CommandBase {
   public void execute() {
     // Passes the speed variable into teleopDrive to make the robot move
     Robot.objectDrivingSubsystem.teleopDrive(variableSpeed,variableSpeed);
+    
   }
 
   // Called once the command ends or is interrupted.

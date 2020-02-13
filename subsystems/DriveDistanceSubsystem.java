@@ -10,13 +10,14 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import frc.robot.Constants;
-import frc.robot.commands.DriveCommand;
+import frc.robot.Robot;
 
-public class DrivingSubsystem extends SubsystemBase {
-  
+public class DriveDistanceSubsystem extends PIDSubsystem {
+ 
   //Declares left motors 
   public WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(Constants.leftMotor1);
   public WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(Constants.leftMotor2);
@@ -42,18 +43,21 @@ public class DrivingSubsystem extends SubsystemBase {
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
 
 
-  
-public DrivingSubsystem() {
-
-
+  public DriveDistanceSubsystem() {
+    super(
+        // The PIDController used by the subsystem
+        new PIDController(Constants.kP, Constants.kI, Constants.kD));
+        setSetpoint(Constants.setpoint);
   }
-public void teleopDrive(double yMove1, double yMove2){
-  //Configures the groups of motors to work with tank drive
-  oDrive.tankDrive(yMove1,yMove2);
-}
+
   @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-    setDefaultCommand(new DriveCommand());
+  public void useOutput(double output, double setpoint) {
+    oDrive.tankDrive(output,output);
+  }
+
+  @Override
+  public double getMeasurement() {
+    // Return the process variable measurement here
+    return Robot.objectDrivingSubsystem.leftMotor2.getSelectedSensorPosition();
   }
 }
