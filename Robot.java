@@ -121,7 +121,7 @@ public class Robot extends TimedRobot {
     double error = Constants.setpoint - distanceTravelled;
     double output = Constants.kP * error;
 
-    Robot.objectDrivingSubsystem.teleopDrive(output, output);
+    objectDrivingSubsystem.teleopDrive(output, output);
   }
 
   @Override
