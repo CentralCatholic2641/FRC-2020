@@ -16,7 +16,6 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
-import frc.robot.subsystems.TurnToAngleSubsystem;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.cscore.CvSource;
@@ -43,7 +42,6 @@ public class Robot extends TimedRobot {
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
-  public static TurnToAngleSubsystem objectTurnToAngleSubsystem =new TurnToAngleSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
   public static Object objectDriveDistanceSubsystem;
   public UsbCamera camera1;
@@ -118,7 +116,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+    double distanceTravelled = (Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Constants.oneRotation / (0.5 * Math.PI));
+    double error = Constants.setpoint - distanceTravelled;
+    double output = Constants.kP * error;
 
+    objectDrivingSubsystem.teleopDrive(output, output);
   }
 
   @Override

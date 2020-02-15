@@ -42,15 +42,15 @@ public class DrivingSubsystem extends SubsystemBase {
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
 
 
-  
-public DrivingSubsystem() {
-
+  public DrivingSubsystem() {
 
   }
-public void teleopDrive(double yMove1, double yMove2){
-  //Configures the groups of motors to work with tank drive
-  oDrive.tankDrive(yMove1,yMove2);
-}
+
+  public void teleopDrive(double yMove1, double yMove2) {
+    //Configures the groups of motors to work with tank drive
+    oDrive.tankDrive(yMove1, yMove2);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
