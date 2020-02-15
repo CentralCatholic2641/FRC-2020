@@ -93,7 +93,7 @@ public final class Constants {
     public static double kI = 0;
     public static double kD = 0;
     public static double kF = 0;
-    public static int wheelDiameter = 6;
+    public static double wheelDiameter = 0.5;
     public static int percentTolerance = 15;
     public static double oneRotation = 4098.85;
     public static double setpoint = 10.0;
