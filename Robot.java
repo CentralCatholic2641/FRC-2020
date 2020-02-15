@@ -7,17 +7,16 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.ClimberSubsystem;
-import frc.robot.subsystems.DriveDistanceSubsystem;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
+import frc.robot.subsystems.TurnToAngleSubsystem;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.cscore.CvSource;
@@ -44,9 +43,9 @@ public class Robot extends TimedRobot {
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
-  public static DriveDistanceSubsystem objeDistanceSubsystem = new DriveDistanceSubsystem();
+  public static TurnToAngleSubsystem objectTurnToAngleSubsystem =new TurnToAngleSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
-public static Object objectDriveDistanceSubsystem;
+  public static Object objectDriveDistanceSubsystem;
   public UsbCamera camera1;
   public CvSource outputStream1;
 
@@ -58,7 +57,7 @@ public static Object objectDriveDistanceSubsystem;
   @Override
   public void robotInit() {
     // Creates a new robot container
-    ahrs = new AHRS(SPI.Port.kMXP);
+    ahrs = new AHRS();
     objectRobotContainer = new RobotContainer();
     SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());

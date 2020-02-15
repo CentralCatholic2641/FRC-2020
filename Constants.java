@@ -70,15 +70,15 @@ public final class Constants {
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
-    public static int shooterButtonPort = 6; // 
-    public static int reverseShooterButtonPort = 2; //RB?
-    public static int intakeButtonPort = 1; // 
-    public static int storeButtonPort = 1; // 
-    public static int retractClimberButtonPort = 3; // 
-    public static int extendClimberButtonPort = 4; // 
+    public static int shooterButtonPort = 0; // 
+    public static int reverseShooterButtonPort = 0; //RB?
+    public static int intakeButtonPort = 0; // 
+    public static int storeButtonPort = 0; // 
+    public static int retractClimberButtonPort = 0; // 
+    public static int extendClimberButtonPort = 0; // 
     public static int wheelLeftClimberButtonPort = 0; // 
     public static int wheelRightClimberButtonPort = 0; // 
-    public static int spinnerButtonPort = 5;
+    public static int spinnerButtonPort = 1;
     
 
     // Pneumatic ports
@@ -101,8 +101,8 @@ public final class Constants {
 
 
     // Encoder
-    public static int leftEncoder = 12;
-    public static int rightEncoder = 11;
+    public static int leftEncoder = 1;
+    public static int rightEncoder = 6;
 
     
     //Camera Port

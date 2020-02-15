@@ -7,6 +7,8 @@
 
 package frc.robot.commands;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -16,6 +18,7 @@ public class DriveCommand extends CommandBase {
   /**
    * Creates a new DriveCommand.
    */
+  AHRS ahrs;
   double variableTime;
   double variableSpeed;
   public DriveCommand() {
@@ -43,6 +46,8 @@ public class DriveCommand extends CommandBase {
     
     SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
     SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
+    ahrs = new AHRS();
+    SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     
     // passes the stick values into teleopdrive
     Robot.objectDrivingSubsystem.teleopDrive(y_stick1, y_stick2);
