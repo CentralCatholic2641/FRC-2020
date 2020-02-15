@@ -23,16 +23,15 @@ import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.cameraserver.CameraServer;
 
-
-
 /**
- * The VM is configured to automatically run this class, and to call the functions corresponding to
- * each mode, as described in the TimedRobot documentation. If you change the name of this class or
- * the package after creating this project, you must also update the build.gradle file in the
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to each mode, as described in the TimedRobot
+ * documentation. If you change the name of this class or the package after
+ * creating this project, you must also update the build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
-  //Creates a new driving subsystem and declares a robot container
+  // Creates a new driving subsystem and declares a robot container
   AHRS ahrs;
   public static RobotContainer objectRobotContainer;
 
@@ -47,11 +46,6 @@ public class Robot extends TimedRobot {
   public UsbCamera camera1;
   public CvSource outputStream1;
 
-  
-  
-
-    
-
   @Override
   public void robotInit() {
     // Creates a new robot container
@@ -59,31 +53,35 @@ public class Robot extends TimedRobot {
     objectRobotContainer = new RobotContainer();
     SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
-    compressor.start(); 
-    SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
-    SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
-    
-    
-    
-    //We might need to make the camera a subsystem or define it in the robot container
-    //Also THis code is somewhat redundant... I am just seeing what is possible
-    //-Justin
-    //CameraServer.getInstance().startAutomaticCapture("camera",0);
-    camera1 = CameraServer.getInstance().startAutomaticCapture("camera",0);
-    //camera1.setResolution(1024,768);
-    //I am thinking that this will create an output stream that we can store as a matrix of numbers
-    //outputStream1 = CameraServer.getInstance().putVideo("camera", 1024,768);
+    compressor.start();
+    SmartDashboard.putNumber("Left Encoder Value is: ",
+        Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
+    SmartDashboard.putNumber("Right Encoder Value is: ",
+        Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
+
+    // We might need to make the camera a subsystem or define it in the robot
+    // container
+    // Also THis code is somewhat redundant... I am just seeing what is possible
+    // -Justin
+    // CameraServer.getInstance().startAutomaticCapture("camera",0);
+    camera1 = CameraServer.getInstance().startAutomaticCapture("camera", 0);
+    // camera1.setResolution(1024,768);
+    // I am thinking that this will create an output stream that we can store as a
+    // matrix of numbers
+    // outputStream1 = CameraServer.getInstance().putVideo("camera", 1024,768);
   }
 
   @Override
   public void robotPeriodic() {
-    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
-    // commands, running already-scheduled commands, removing finished or interrupted commands,
-    // and running subsystem periodic() methods.  This must be called from the robot's periodic
+    // Runs the Scheduler. This is responsible for polling buttons, adding
+    // newly-scheduled
+    // commands, running already-scheduled commands, removing finished or
+    // interrupted commands,
+    // and running subsystem periodic() methods. This must be called from the
+    // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-    
-    
+
   }
 
   /**
@@ -100,22 +98,28 @@ public class Robot extends TimedRobot {
   }
 
   /**
-   * This autonomous runs the autonomous command selected by your {@link RobotContainer} class.
+   * This autonomous runs the autonomous command selected by your
+   * {@link RobotContainer} class.
    */
   @Override
   public void autonomousInit() {
     Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
     Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
-  
+
   }
 
   /**
    * This function is called periodically during autonomous.
    */
 
-
   @Override
   public void autonomousPeriodic() {
+    try {
+      wait(10, 0);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     // Left
     double lDistanceTravelled = (objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Constants.oneRotation / (Constants.wheelDiameter * Math.PI));
     double lError = Constants.setpoint - lDistanceTravelled;
@@ -127,6 +131,7 @@ public class Robot extends TimedRobot {
     double rOutput = Constants.kP * rError;
 
     objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
+    
   }
 
   @Override
