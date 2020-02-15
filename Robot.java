@@ -116,12 +116,17 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
-    double averageEncoderPosition = (Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() + Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition()) / 2;
-    double distanceTravelled = (averageEncoderPosition / Constants.oneRotation) * (Constants.oneRotation / (Constants.wheelDiameter * Math.PI));
-    double error = Constants.setpoint - distanceTravelled;
-    double output = Constants.kP * error;
+    // Left
+    double lDistanceTravelled = (objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Constants.oneRotation / (Constants.wheelDiameter * Math.PI));
+    double lError = Constants.setpoint - lDistanceTravelled;
+    double lOutput = Constants.kP * lError;
+    
+    // Right
+    double rDistanceTravelled = (objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Constants.oneRotation / (Constants.wheelDiameter * Math.PI));
+    double rError = Constants.setpoint - rDistanceTravelled;
+    double rOutput = Constants.kP * rError;
 
-    objectDrivingSubsystem.teleopDrive(output, -output);
+    objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
   }
 
   @Override
