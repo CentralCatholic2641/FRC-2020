@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.ClimberSubsystem;
@@ -16,12 +17,12 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
-import com.kauailabs.navx.frc.AHRS;
+//import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSource;
-import edu.wpi.first.cameraserver.CameraServer;
+//import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,7 +33,7 @@ import edu.wpi.first.cameraserver.CameraServer;
  */
 public class Robot extends TimedRobot {
   // Creates a new driving subsystem and declares a robot container
-  AHRS ahrs;
+  // AHRS ahrs;
   public static RobotContainer objectRobotContainer;
 
   public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
@@ -49,9 +50,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // Creates a new robot container
-    ahrs = new AHRS();
     objectRobotContainer = new RobotContainer();
-    SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
+    // SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
     compressor.start();
     SmartDashboard.putNumber("Left Encoder Value is: ",
@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
     // Also THis code is somewhat redundant... I am just seeing what is possible
     // -Justin
     // CameraServer.getInstance().startAutomaticCapture("camera",0);
-    camera1 = CameraServer.getInstance().startAutomaticCapture("camera", 0);
+    // camera1 = CameraServer.getInstance().startAutomaticCapture("camera", 0);
     // camera1.setResolution(1024,768);
     // I am thinking that this will create an output stream that we can store as a
     // matrix of numbers
@@ -114,12 +114,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
-    try {
-      wait(10, 0);
-    } catch (InterruptedException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    Timer.delay(0.1);
     // Left
     double lDistanceTravelled = (objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Constants.oneRotation / (Constants.wheelDiameter * Math.PI));
     double lError = Constants.setpoint - lDistanceTravelled;
