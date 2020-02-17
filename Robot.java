@@ -47,11 +47,23 @@ public class Robot extends TimedRobot {
   public UsbCamera camera1;
   public CvSource outputStream1;
 
+  double c;
+  double lDistanceTravelled;
+  double lError;
+  double lOutput;
+  double lErrorI = 0;
+
+  double rDistanceTravelled;
+  double rError;
+  double rOutput;
+  double rErrorI = 0;
+
   @Override
   public void robotInit() {
     // Creates a new robot container
     objectRobotContainer = new RobotContainer();
     // SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
+    SmartDashboard.putBoolean("Pressure2", true);
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
     compressor.start();
     SmartDashboard.putNumber("Left Encoder Value is: ",
@@ -112,21 +124,36 @@ public class Robot extends TimedRobot {
    * This function is called periodically during autonomous.
    */
 
+  
+
   @Override
   public void autonomousPeriodic() {
-    Timer.delay(0.1);
+    // objectDrivingSubsystem.teleopDrive(.5,.5);
+    // SmartDashboard.putNumber("c", c++);
     // Left
-    double lDistanceTravelled = (objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Constants.oneRotation / (Constants.wheelDiameter * Math.PI));
-    double lError = Constants.setpoint - lDistanceTravelled;
-    double lOutput = Constants.kP * lError;
+    lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
+    lError = Constants.setpoint - lDistanceTravelled;
+    lErrorI += lError;
+    lErrorI *= .95;
+    lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
     
     // Right
-    double rDistanceTravelled = (objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Constants.oneRotation / (Constants.wheelDiameter * Math.PI));
-    double rError = Constants.setpoint - rDistanceTravelled;
-    double rOutput = Constants.kP * rError;
+    rDistanceTravelled = (objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
+    rError = Constants.setpoint - rDistanceTravelled;
+    rErrorI += rError;
+    rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
 
-    objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
-    
+    objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
+    System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
+
+    SmartDashboard.putNumber("lOutput", lOutput);
+    SmartDashboard.putNumber("l-dT", lDistanceTravelled);
+    SmartDashboard.putNumber("l-error", lError);
+
+    SmartDashboard.putNumber("rOutput", rOutput);
+    SmartDashboard.putNumber("r-dT", rDistanceTravelled);
+    SmartDashboard.putNumber("r-error", rError);
+
   }
 
   @Override

@@ -50,7 +50,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Will execute time command when the button is pressed
-    new DriveCommand();
+    // new DriveCommand();
     xbutton.whenPressed(new AddNext());
     ybutton.whileHeld(new IntakeCommand(), true);
     zbutton.whileHeld(new StoreCommand(), true);

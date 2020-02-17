@@ -61,23 +61,23 @@ public final class Constants {
     
 
     // Gamepad1 controller
-    public static int gamepad1Port = 0;
+    public static int gamepad1Port = 1;
     public static int joystickPort = 1; // left joystick
     public static int joystickPort2 = 5; // right joystick
-    public static int addNextButtonPort = 0; // X button
+    public static int addNextButtonPort = 1; // X button
     
     
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
-    public static int shooterButtonPort = 0; // 
-    public static int reverseShooterButtonPort = 0; //RB?
-    public static int intakeButtonPort = 0; // 
-    public static int storeButtonPort = 0; // 
-    public static int retractClimberButtonPort = 0; // 
-    public static int extendClimberButtonPort = 0; // 
-    public static int wheelLeftClimberButtonPort = 0; // 
-    public static int wheelRightClimberButtonPort = 0; // 
+    public static int shooterButtonPort = 1; // 
+    public static int reverseShooterButtonPort = 1; //RB?
+    public static int intakeButtonPort = 1; // 
+    public static int storeButtonPort = 1; // 
+    public static int retractClimberButtonPort = 1; // 
+    public static int extendClimberButtonPort = 1; // 
+    public static int wheelLeftClimberButtonPort = 1; // 
+    public static int wheelRightClimberButtonPort = 1; // 
     public static int spinnerButtonPort = 1;
     
 
@@ -89,14 +89,14 @@ public final class Constants {
     
 
     // PID constants
-    public static double kP = 0.05;
-    public static double kI = 0;
+    public static double kP = 0.001;
+    public static double kI = 0.015;
     public static double kD = 0;
     public static double kF = 0;
     public static double wheelDiameter = 0.5;
     public static int percentTolerance = 15;
     public static double oneRotation = 4098.85;
-    public static double setpoint = 10.0;
+    public static double setpoint = 5.0;
     
 
 
