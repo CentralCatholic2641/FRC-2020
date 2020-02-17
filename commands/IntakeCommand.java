@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
@@ -17,6 +18,10 @@ public class IntakeCommand extends CommandBase {
    * Creates a new IntakeCommand.
    */
   double variableTimeInstake;
+
+  //Added a variable time and a new timer
+  double variableTime=1.0;
+  private final Timer localTimer = new Timer();
 
   public IntakeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -33,12 +38,21 @@ public class IntakeCommand extends CommandBase {
   @Override
   public void execute() {
     Robot.objectIntakeSubsystem.DriveIntakeMotor(Constants.intakeSpeed);
+    //Added the store motor
+    Robot.objectStoreSubsystem.DriveStoreMotor(Constants.StoreSpeed);
   }
   
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.objectIntakeSubsystem.DriveIntakeMotor(0);
+    Robot.objectStoreSubsystem.DriveStoreMotor(0);
+    //I added this section for now in order to make it so that
+    //The intake motor will continue to run a certain amount of time after the storing motor
+    localTimer.start();
+    if (localTimer.get() > variableTime){
+      Robot.objectIntakeSubsystem.DriveIntakeMotor(0);
+    }
+
   }
 
   // Returns true when the command should end.
