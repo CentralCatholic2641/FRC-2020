@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.ClimberSubsystem;
@@ -17,6 +16,7 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
+import frc.robot.commands.DriveCommand;
 //import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.cscore.CvSource;
@@ -47,6 +47,7 @@ public class Robot extends TimedRobot {
   public UsbCamera camera1;
   public CvSource outputStream1;
 
+
   double c;
   double lDistanceTravelled;
   double lError;
@@ -57,6 +58,10 @@ public class Robot extends TimedRobot {
   double rError;
   double rOutput;
   double rErrorI = 0;
+
+
+  boolean toggleOn = false;
+  boolean togglePressed = false;
 
   @Override
   public void robotInit() {
@@ -172,7 +177,22 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    updateToggle();
 
+    if (toggleOn) {
+      new DriveCommand();
+    }
+  }
+
+  public void updateToggle() {
+    if (objectRobotContainer.gamepad1.getRawButton(Constants.joystickPort) || objectRobotContainer.gamepad1.getRawButton(Constants.joystickPort2)) {
+      if (!togglePressed) {
+        toggleOn = !toggleOn;
+        togglePressed = true;
+      } else {
+        togglePressed = false;
+      }
+    }
   }
 
   @Override

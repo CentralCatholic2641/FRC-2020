@@ -66,7 +66,7 @@ public final class Constants {
     public static int joystickPort2 = 5; // right joystick
     public static int addNextButtonPort = 1; // X button
     
-    
+
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
