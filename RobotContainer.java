@@ -15,7 +15,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.AddNext;
 //import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExtendClimberCommand;
+import frc.robot.commands.ExtendIntakeCommand;
 import frc.robot.commands.RetractClimberCommand;
+import frc.robot.commands.RetractIntakeCommand;
 import frc.robot.commands.WheelClimberCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
@@ -35,9 +37,12 @@ public class RobotContainer {
   public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
   public Joystick gamepad2 = new Joystick(Constants.gamepad2Port);
   public Button xbutton = new JoystickButton(gamepad1, Constants.addNextButtonPort);
-  public Button ybutton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
+
+  public Button jbutton = new JoystickButton(gamepad1, Constants.pistonIntakeExtendPort);
+  public Button ybutton = new JoystickButton(gamepad2, Constants.pistonIntakeRetractPort);
   public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
   public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
+  
   public Button reverseShooterButton = new JoystickButton(gamepad2, Constants.reverseShooterButtonPort);
   public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButtonPort);
   public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
@@ -51,10 +56,20 @@ public class RobotContainer {
   public RobotContainer() {
     // Will execute time command when the button is pressed
     xbutton.whenPressed(new AddNext());
-    ybutton.whileHeld(new IntakeCommand(), true);
-    zbutton.whileHeld(new StoreCommand(), true);
-    sbutton.whileHeld(new ShooterCommand(1), true);
-    reverseShooterButton.whileHeld(new ShooterCommand(-1), true);
+
+    //Extend and Retract Intake
+    jbutton.whenPressed(new ExtendIntakeCommand(), true);
+    ybutton.whenPressed(new RetractIntakeCommand(), true);
+
+    //Fast shooter and conveyor
+    sbutton.whileHeld(new ShooterCommand(Constants.fastShooter), true);
+    sbutton.whileHeld(new StoreCommand(Constants.fastStore), true);
+
+    //Medium conveyer and intake
+    zbutton.whileHeld(new IntakeCommand(Constants.intakeSpeed), true);
+    zbutton.whileHeld(new StoreCommand(Constants.StoreSpeed),true);
+
+
     spinnerButton.whileHeld(new SpinningCommand(), true);
     retractClimberButton.whileHeld(new RetractClimberCommand(), true);
     extendClimberButton.whileHeld(new ExtendClimberCommand(), true);

@@ -8,31 +8,32 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class ShooterCommand extends CommandBase {
   /**
    * Creates a new ShooterCommand.
    */
-  float inputFromButton;
+  double power;
 
-  public ShooterCommand(float direction) {
+  public ShooterCommand(double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectShooterSubsystem);
-    inputFromButton = direction;
+    power = speed;
+    
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //Robot.objectShooterSubsystem.DriveShooterMotor(inputFromButton*Constants.shooterSpeed);
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.objectShooterSubsystem.DriveShooterMotor(-inputFromButton*Constants.shooterSpeed);
+    Robot.objectShooterSubsystem.DriveShooterMotor(power);
   }
 
   // Called once the command ends or is interrupted.
