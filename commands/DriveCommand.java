@@ -30,10 +30,6 @@ public class DriveCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
-    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
-    
-     
     
   }
 

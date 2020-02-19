@@ -10,13 +10,15 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.DriveCommand;
+import frc.robot.subsystems.AutoDrivingSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
-import frc.robot.commands.DriveCommand;
+//import frc.robot.commands.DriveCommand;
 //import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.cscore.CvSource;
@@ -35,8 +37,8 @@ public class Robot extends TimedRobot {
   // Creates a new driving subsystem and declares a robot container
   // AHRS ahrs;
   public static RobotContainer objectRobotContainer;
-
   public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
+  public static AutoDrivingSubsystem objectAutoDrivingSubsystem = new AutoDrivingSubsystem();
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
   public static StoreSubsystem objectStoreSubsystem = new StoreSubsystem();
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
@@ -65,6 +67,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    
     // Creates a new robot container
     objectRobotContainer = new RobotContainer();
     // SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
@@ -76,6 +79,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Right Encoder Value is: ",
         Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
 
+    
     // We might need to make the camera a subsystem or define it in the robot
     // container
     // Also THis code is somewhat redundant... I am just seeing what is possible
@@ -125,17 +129,10 @@ public class Robot extends TimedRobot {
 
   }
 
-  /**
-   * This function is called periodically during autonomous.
-   */
-
-  
 
   @Override
-  public void autonomousPeriodic() {
-    // objectDrivingSubsystem.teleopDrive(.5,.5);
-    // SmartDashboard.putNumber("c", c++);
-    // Left
+  public void autonomousPeriodic() {    
+    // Left 
     lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
@@ -148,7 +145,7 @@ public class Robot extends TimedRobot {
     rErrorI += rError;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
 
-    objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
+    objectAutoDrivingSubsystem.teleopDrive2(lOutput, rOutput);
     System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
 
     SmartDashboard.putNumber("lOutput", lOutput);
@@ -158,7 +155,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("rOutput", rOutput);
     SmartDashboard.putNumber("r-dT", rDistanceTravelled);
     SmartDashboard.putNumber("r-error", rError);
-
+      
   }
 
   @Override
@@ -167,8 +164,8 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-   // if (m_autonomousCommand != null) {
-     // m_autonomousCommand.cancel();
+    //if (m_autonomousCommand != null) {
+      //m_autonomousCommand.cancel();
     //}
   }
 
@@ -177,22 +174,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    updateToggle();
-
-    if (toggleOn) {
-      new DriveCommand();
-    }
-  }
-
-  public void updateToggle() {
-    if (objectRobotContainer.gamepad1.getRawButton(Constants.joystickPort) || objectRobotContainer.gamepad1.getRawButton(Constants.joystickPort2)) {
-      if (!togglePressed) {
-        toggleOn = !toggleOn;
-        togglePressed = true;
-      } else {
-        togglePressed = false;
-      }
-    }
+    new DriveCommand();
   }
 
   @Override
