@@ -62,12 +62,9 @@ public class Robot extends TimedRobot {
   double rErrorI = 0;
 
 
-  boolean toggleOn = false;
-  boolean togglePressed = false;
-
   @Override
   public void robotInit() {
-    
+    new DriveCommand();
     // Creates a new robot container
     objectRobotContainer = new RobotContainer();
     // SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
@@ -133,6 +130,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {    
     // Left 
+    
     lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
@@ -155,7 +153,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("rOutput", rOutput);
     SmartDashboard.putNumber("r-dT", rDistanceTravelled);
     SmartDashboard.putNumber("r-error", rError);
-      
+    
   }
 
   @Override
@@ -174,7 +172,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    new DriveCommand();
+    //new DriveCommand();
   }
 
   @Override

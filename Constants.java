@@ -59,7 +59,7 @@ public final class Constants {
 
     //Spinning motor port
 
-    public static int spinningMotor = 7;
+    public static int spinningMotor = 1;
     
 
     // Gamepad1 controller
@@ -80,8 +80,8 @@ public final class Constants {
     public static int wheelLeftClimberButtonPort = 0; // 
     public static int wheelRightClimberButtonPort = 0; // 
     public static int spinnerButtonPort = 0;
-    public static int pistonIntakeExtendPort = 1;
-    public static int pistonIntakeRetractPort = 2;
+    public static int pistonIntakeExtendPort = 0;
+    public static int pistonIntakeRetractPort = 0;
     
 
     // Pneumatic ports
