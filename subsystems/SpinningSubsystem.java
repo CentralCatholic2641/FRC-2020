@@ -19,8 +19,6 @@ public class SpinningSubsystem extends SubsystemBase {
    * Creates a new spinningSubsystem.
    */
   public WPI_TalonSRX spinningMotor = new WPI_TalonSRX(Constants.spinningMotor);
-
-
   public DoubleSolenoid spinngingPiston = new DoubleSolenoid(Constants.spinnerPnuematicPort1, Constants.spinnerPnuematicPort2);
   public SpinningSubsystem() {
     // Use addRequirements() here to declare subsystem dependencies.

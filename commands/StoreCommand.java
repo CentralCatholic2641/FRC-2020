@@ -14,12 +14,10 @@ public class StoreCommand extends CommandBase {
   /**
    * Creates a new ShooterCommand.
    */
-  double power;
-
-  public StoreCommand(double speed) {
+  public StoreCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectStoreSubsystem);
-    speed = power;
+    
   }
 
   // Called when the command is initially scheduled.
@@ -31,7 +29,7 @@ public class StoreCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.objectStoreSubsystem.DriveStoreMotor(power);
+    Robot.objectStoreSubsystem.DriveStoreMotor(-0.95);
   }
 
   // Called once the command ends or is interrupted.

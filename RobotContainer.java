@@ -38,10 +38,11 @@ public class RobotContainer {
   public Joystick gamepad2 = new Joystick(Constants.gamepad2Port);
   public Button xbutton = new JoystickButton(gamepad1, Constants.addNextButtonPort);
 
-  public Button jbutton = new JoystickButton(gamepad1, Constants.pistonIntakeExtendPort);
-  public Button ybutton = new JoystickButton(gamepad2, Constants.pistonIntakeRetractPort);
-  public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
-  public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
+  public Button pistonIntakeExtend = new JoystickButton(gamepad2, Constants.pistonIntakeExtendPort);
+  public Button pistonIntakeRetact = new JoystickButton(gamepad2, Constants.pistonIntakeRetractPort);
+  public Button storeButton = new JoystickButton(gamepad2, Constants.storeButtonPort);
+  public Button shooterButton= new JoystickButton(gamepad2, Constants.shooterButtonPort);
+  public Button intakeButton = new JoystickButton(gamepad2, Constants.intakeButton);
   
   public Button reverseShooterButton = new JoystickButton(gamepad2, Constants.reverseShooterButtonPort);
   public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButtonPort);
@@ -57,17 +58,14 @@ public class RobotContainer {
     // Will execute time command when the button is pressed
     xbutton.whenPressed(new AddNext());
 
+
     //Extend and Retract Intake
-    jbutton.whenPressed(new ExtendIntakeCommand(), true);
-    ybutton.whenPressed(new RetractIntakeCommand(), true);
-
-    //Fast shooter and conveyor
-    sbutton.whileHeld(new ShooterCommand(Constants.fastShooter), true);
-    sbutton.whileHeld(new StoreCommand(Constants.fastStore), true);
-
-    //Medium conveyer and intake
-    zbutton.whileHeld(new IntakeCommand(Constants.intakeSpeed), true);
-    zbutton.whileHeld(new StoreCommand(Constants.StoreSpeed),true);
+    pistonIntakeExtend.whenPressed(new ExtendIntakeCommand(), true);
+    pistonIntakeRetact.whenPressed(new RetractIntakeCommand(), true);
+    shooterButton.whileHeld(new ShooterCommand(), true);
+    storeButton.whileHeld(new StoreCommand(), true);
+    intakeButton.whileHeld(new IntakeCommand(), true);
+    
 
 
     spinnerButton.whileHeld(new SpinningCommand(), true);

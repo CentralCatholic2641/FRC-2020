@@ -9,8 +9,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+//import edu.wpi.first.wpilibj.DoubleSolenoid;
+//import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 //import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -22,19 +22,19 @@ public class ClimberSubsystem extends SubsystemBase {
 
   public WPI_TalonSRX wheelMotor = new WPI_TalonSRX(Constants.wheelMotor);
   public WPI_TalonSRX winchMotor = new WPI_TalonSRX(Constants.winchMotor);
-  public DoubleSolenoid climberPiston = new DoubleSolenoid(Constants.climberPneumaticPort1, Constants.climberPneumaticPort2);
+  //public DoubleSolenoid climberPiston = new DoubleSolenoid(Constants.climberPneumaticPort1, Constants.climberPneumaticPort2);
 
   public ClimberSubsystem() {
 
   }
 
   public void RetractClimber() {
-    climberPiston.set(Value.kReverse);
+    //climberPiston.set(Value.kReverse);
     //winchMotor.set(.5);
   }
 
   public void ExtendClimber() {
-    climberPiston.set(Value.kForward);
+    //climberPiston.set(Value.kForward);
   }
 
   public void StartWheel(float direction) {
