@@ -141,9 +141,10 @@ public class Robot extends TimedRobot {
     rDistanceTravelled = (objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
     rError = Constants.setpoint - rDistanceTravelled;
     rErrorI += rError;
+    rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
 
-    objectAutoDrivingSubsystem.teleopDrive2(lOutput, rOutput);
+    objectAutoDrivingSubsystem.teleopDrive2(lOutput, lOutput);
     System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
 
     SmartDashboard.putNumber("lOutput", lOutput);
