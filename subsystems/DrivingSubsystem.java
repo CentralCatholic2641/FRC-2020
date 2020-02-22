@@ -9,6 +9,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+<<<<<<< HEAD
+=======
+import edu.wpi.first.cameraserver.CameraServer;
+>>>>>>> parent of eb78df5... update
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -40,7 +44,13 @@ public class DrivingSubsystem extends SubsystemBase {
 
   //Combines the left and right groups of motors
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
+<<<<<<< HEAD
 
+=======
+  
+public DrivingSubsystem() {
+  CameraServer.getInstance().startAutomaticCapture("camera",0);
+>>>>>>> parent of eb78df5... update
 
   public DrivingSubsystem() {
 

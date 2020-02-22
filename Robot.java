@@ -21,10 +21,17 @@ import frc.robot.subsystems.StoreSubsystem;
 //import frc.robot.commands.DriveCommand;
 //import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
+<<<<<<< HEAD
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSource;
 //import edu.wpi.first.cameraserver.CameraServer;
+=======
+import edu.wpi.cscore.VideoSource;
+import edu.wpi.first.wpilibj.CameraServer;
+
+
+>>>>>>> parent of eb78df5... update
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -45,9 +52,13 @@ public class Robot extends TimedRobot {
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
+<<<<<<< HEAD
   public static Object objectDriveDistanceSubsystem;
   public UsbCamera camera1;
   public CvSource outputStream1;
+=======
+  
+>>>>>>> parent of eb78df5... update
 
 
   double c;
@@ -74,6 +85,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Pressure2", true);
     SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
     compressor.start();
+<<<<<<< HEAD
     SmartDashboard.putNumber("Left Encoder Value is: ",
         Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
     SmartDashboard.putNumber("Right Encoder Value is: ",
@@ -90,6 +102,8 @@ public class Robot extends TimedRobot {
     // I am thinking that this will create an output stream that we can store as a
     // matrix of numbers
     // outputStream1 = CameraServer.getInstance().putVideo("camera", 1024,768);
+=======
+>>>>>>> parent of eb78df5... update
   }
 
   @Override
@@ -102,7 +116,10 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of eb78df5... update
   }
 
   /**

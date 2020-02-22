@@ -38,9 +38,14 @@ public final class Constants {
     public static int compressorPort = 0;
 
     //Intake speed
+<<<<<<< HEAD
     public static double intakeSpeed = -0.50;
     public static double shooterSpeed = 0.35;
     public static double StoreSpeed = 0.35;
+=======
+    public static double intakeSpeed = -0.35;
+    public static double shooterSpeed = 0.55;
+>>>>>>> parent of eb78df5... update
 
 
     // Store motor port
@@ -68,8 +73,9 @@ public final class Constants {
     
 
     
-    // Gamepad2 controller - Please Comment which port is which
+    // Gamepad2 controller
     public static int gamepad2Port = 1;
+<<<<<<< HEAD
     public static int shooterButtonPort = 4; // 
     public static int reverseShooterButtonPort = 0; //RB?
     public static int storeButtonPort = 3; // 
@@ -81,6 +87,16 @@ public final class Constants {
     public static int pistonIntakeExtendPort = 1;
     public static int pistonIntakeRetractPort = 2;
     public static int intakeButton = 6;
+=======
+    public static int shooterButtonPort = 2; // right trigger
+    public static int intakeButtonPort = 1; // Y button
+    public static int storeButtonPort = 1; // Z button
+    public static int retractClimberButtonPort = 3; // A button
+    public static int extendClimberButtonPort = 4; // Y button
+    public static int wheelLeftClimberButtonPort = 0; // left trigger
+    public static int wheelRightClimberButtonPort = 0; // right trigger
+    public static int spinnerButtonPort = 0;
+>>>>>>> parent of eb78df5... update
     
 
     // Pneumatic ports
@@ -108,7 +124,4 @@ public final class Constants {
     public static int leftEncoder = 0;
     public static int rightEncoder = 0;
 
-    
-    //Camera Port
-    public static int camera = 0;
 }
