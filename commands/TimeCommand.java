@@ -26,7 +26,7 @@ public class TimeCommand extends CommandBase {
     variableSpeed = speed;
     
     // Adds the driving subsystem
-    addRequirements(Robot.objectDrivingSubsystem);
+    //addRequirements(Robot.objectDrivingSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -39,7 +39,7 @@ public class TimeCommand extends CommandBase {
   @Override
   public void execute() {
     // Passes the speed variable into teleopDrive to make the robot move
-    Robot.objectDrivingSubsystem.teleopDrive(variableSpeed,variableSpeed);
+    //Robot.objectDrivingSubsystem.teleopDrive(variableSpeed,variableSpeed);
     
   }
 
@@ -47,7 +47,7 @@ public class TimeCommand extends CommandBase {
   @Override
   public void end(boolean interrupted) {
     // This is executed when the timer has expired. It tells teleopDrive to cut all power to the motors
-    Robot.objectDrivingSubsystem.teleopDrive(0,0);
+    //Robot.objectDrivingSubsystem.teleopDrive(0,0);
   }
 
   // Returns true when the command should end.

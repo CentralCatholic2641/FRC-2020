@@ -23,7 +23,7 @@ public class DriveCommand extends CommandBase {
   double variableSpeed;
   public DriveCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.objectDrivingSubsystem);
+    //addRequirements(Robot.objectDrivingSubsystem);
     
   }
 
@@ -40,13 +40,13 @@ public class DriveCommand extends CommandBase {
     double y_stick1 = - .75 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort);
     double y_stick2 = - .75 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort2);
     
-    SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
-    SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
+    //SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
+    //SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
     //ahrs = new AHRS();
     //SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     
     // passes the stick values into teleopdrive
-    Robot.objectDrivingSubsystem.teleopDrive(y_stick1, y_stick2);
+    //Robot.objectDrivingSubsystem.teleopDrive(y_stick1, y_stick2);
   }
 
   // Called once the command ends or is interrupted.

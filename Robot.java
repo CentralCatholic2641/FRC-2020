@@ -7,6 +7,15 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.commands.DriveCommand;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -20,9 +29,9 @@ import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
 //import frc.robot.commands.DriveCommand;
 //import com.kauailabs.navx.frc.AHRS;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
+// import edu.wpi.first.wpilibj.Compressor;
+// import edu.wpi.cscore.CvSource;
+// import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSource;
 //import edu.wpi.first.cameraserver.CameraServer;
 
@@ -34,20 +43,44 @@ import edu.wpi.cscore.UsbCamera;
  * project.
  */
 public class Robot extends TimedRobot {
+  public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
+  
+  public WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(Constants.leftMotor1);
+  public WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(Constants.leftMotor2);
+  public WPI_TalonSRX leftMotor3 = new WPI_TalonSRX(Constants.leftMotor3);
+  
+  //Groups the left motors together
+  public SpeedControllerGroup leftGroup = new SpeedControllerGroup(leftMotor1, leftMotor2, leftMotor3);
+
+  //Delcares right motors
+  public WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(Constants.rightMotor1);
+  public WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(Constants.rightMotor2);
+  public WPI_TalonSRX rightMotor3 = new WPI_TalonSRX(Constants.rightMotor3);
+
+  //Encoder Motor Controller
+
+  //public WPI_TalonSRX leftEncoder = new WPI_TalonSRX(Constants.leftEncoder);
+ // public WPI_TalonSRX rightEncoder = new WPI_TalonSRX(Constants.rightEncoder);
+  
+  //Groups the right motors together
+  public SpeedControllerGroup rightGroup = new SpeedControllerGroup(rightMotor1, rightMotor2, rightMotor3);
+
+  //Combines the left and right groups of motors
+  DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
   // Creates a new driving subsystem and declares a robot container
   // AHRS ahrs;
   public static RobotContainer objectRobotContainer;
-  public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
-  public static AutoDrivingSubsystem objectAutoDrivingSubsystem = new AutoDrivingSubsystem();
+  //public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
+  //public static AutoDrivingSubsystem objectAutoDrivingSubsystem = new AutoDrivingSubsystem();
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
   public static StoreSubsystem objectStoreSubsystem = new StoreSubsystem();
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
-  public static Compressor compressor = new Compressor(Constants.compressorPort);
-  public static Object objectDriveDistanceSubsystem;
-  public UsbCamera camera1;
-  public CvSource outputStream1;
+  // public static Compressor compressor = new Compressor(Constants.compressorPort);
+  // public static Object objectDriveDistanceSubsystem;
+  // public UsbCamera camera1;
+  // public CvSource outputStream1;
 
 
   double c;
@@ -64,19 +97,19 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    new DriveCommand();
+    /*new DriveCommand();
     // Creates a new robot container
     objectRobotContainer = new RobotContainer();
     // SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
     SmartDashboard.putBoolean("Pressure2", true);
-    SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
-    compressor.start();
+    // // SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
+    // compressor.start();
     SmartDashboard.putNumber("Left Encoder Value is: ",
         Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
     SmartDashboard.putNumber("Right Encoder Value is: ",
         Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
 
-    
+    */
     // We might need to make the camera a subsystem or define it in the robot
     // container
     // Also THis code is somewhat redundant... I am just seeing what is possible
@@ -98,7 +131,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods. This must be called from the
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
-    CommandScheduler.getInstance().run();
+    //CommandScheduler.getInstance().run();
 
   }
 
@@ -121,8 +154,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
-    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
+    //Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
+    //Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
 
   }
 
@@ -131,7 +164,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {    
     // Left 
     
-    lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
+    /*lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
     lErrorI *= .95;
@@ -153,7 +186,7 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("rOutput", rOutput);
     SmartDashboard.putNumber("r-dT", rDistanceTravelled);
-    SmartDashboard.putNumber("r-error", rError);
+    SmartDashboard.putNumber("r-error", rError);*/
     
   }
 
@@ -174,12 +207,13 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     //new DriveCommand();
+    oDrive.tankDrive(gamepad1.getRawAxis(Constants.joystickPort),gamepad1.getRawAxis(Constants.joystickPort2));
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
-    CommandScheduler.getInstance().cancelAll();
+    //CommandScheduler.getInstance().cancelAll();
   }
 
   /**
