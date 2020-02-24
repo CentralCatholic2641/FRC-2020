@@ -32,7 +32,7 @@ public final class Constants {
 
 
     // Intake motor port
-    public static int intakeMotor = 8;
+    public static int intakeMotor = 7;
 
     //Compressor port
     public static int compressorPort = 0;
@@ -46,7 +46,7 @@ public final class Constants {
 
 
     // Store motor port
-    public static int storeMotor = 10;
+    public static int storeMotor = 8;
 
     
     // Shooter motor port

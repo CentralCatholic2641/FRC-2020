@@ -7,6 +7,8 @@
 
 package frc.robot.commands;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -20,23 +22,27 @@ public class IntakeCommand extends CommandBase {
 
   public IntakeCommand(double speed){
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.objectIntakeSubsystem);
+    // addRequirements(Robot.objectIntakeSubsystem);
     speed = power;
+    final WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.intakeMotor);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+  }
 
+  public void DriveIntakeMotor(double speed){
+    intakeMotor.set(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.objectIntakeSubsystem.DriveIntakeMotor(Constants.intakeSpeed);
-    
+    // Robot.objectIntakeSubsystem.DriveIntakeMotor(Constants.intakeSpeed);
+    // DriveIntakeMotor(-0.35);
   }
-  
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {

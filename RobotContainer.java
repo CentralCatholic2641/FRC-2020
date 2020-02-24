@@ -50,8 +50,8 @@ public class RobotContainer {
   public Button wheelLeftClimberButton = new JoystickButton(gamepad2, Constants.wheelLeftClimberButtonPort);
   public Button wheelRightClimberButton = new JoystickButton(gamepad2, Constants.wheelRightClimberButtonPort);
 
-  /**
-   * The container for the robot.  Contains subsystems, OI devices, and commands.
+  /*
+    The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Will execute time command when the button is pressed

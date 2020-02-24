@@ -13,10 +13,12 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 import frc.robot.commands.DriveCommand;
-
+import frc.robot.commands.IntakeCommand;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.DriveCommand;
@@ -44,6 +46,8 @@ import frc.robot.subsystems.StoreSubsystem;
  */
 public class Robot extends TimedRobot {
   public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
+
+  public JoystickButton x = new JoystickButton(gamepad1, 3);
   
   public WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(Constants.leftMotor1);
   public WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(Constants.leftMotor2);
@@ -163,8 +167,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {    
     // Left 
-    
-    /*lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
+    /*
+    lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
     lErrorI *= .95;
@@ -186,8 +190,9 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putNumber("rOutput", rOutput);
     SmartDashboard.putNumber("r-dT", rDistanceTravelled);
-    SmartDashboard.putNumber("r-error", rError);*/
-    
+    SmartDashboard.putNumber("r-error", rError);
+    */
+    oDrive.tankDrive(.5,.5);
   }
 
   @Override
@@ -208,6 +213,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     //new DriveCommand();
     oDrive.tankDrive(gamepad1.getRawAxis(Constants.joystickPort),gamepad1.getRawAxis(Constants.joystickPort2));
+    x.whileHeld(new IntakeCommand(Constants.intakeSpeed), true);
   }
 
   @Override
