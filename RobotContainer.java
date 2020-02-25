@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.AddNext;
-//import frc.robot.commands.DriveCommand;
 import frc.robot.commands.ExtendClimberCommand;
 import frc.robot.commands.ExtendIntakeCommand;
 import frc.robot.commands.RetractClimberCommand;
@@ -21,8 +19,8 @@ import frc.robot.commands.RetractIntakeCommand;
 import frc.robot.commands.WheelClimberCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
-import frc.robot.commands.SpinningCommand;
 import frc.robot.commands.StoreCommand;
+import frc.robot.commands.SpinningCommand;
 
 
 /**
@@ -54,20 +52,18 @@ public class RobotContainer {
     The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Will execute time command when the button is pressed
-    xbutton.whenPressed(new AddNext());
-
+    
     //Extend and Retract Intake
     jbutton.whenPressed(new ExtendIntakeCommand(), true);
     ybutton.whenPressed(new RetractIntakeCommand(), true);
 
     //Fast shooter and conveyor
-    sbutton.whileHeld(new ShooterCommand(Constants.fastShooter), true);
-    sbutton.whileHeld(new StoreCommand(Constants.fastStore), true);
+    jbutton.whileHeld(new ShooterCommand(), true);
+    sbutton.whileHeld(new StoreCommand(), true);
 
     //Medium conveyer and intake
-    zbutton.whileHeld(new IntakeCommand(Constants.intakeSpeed), true);
-    zbutton.whileHeld(new StoreCommand(Constants.StoreSpeed),true);
+    zbutton.whileHeld(new IntakeCommand(), true);
+    zbutton.whileHeld(new StoreCommand(),true);
 
 
     spinnerButton.whileHeld(new SpinningCommand(), true);

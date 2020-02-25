@@ -32,7 +32,7 @@ public final class Constants {
 
 
     // Intake motor port
-    public static int intakeMotor = 7;
+    public static int intakeMotor = 0;
 
     //Compressor port
     public static int compressorPort = 0;
@@ -46,11 +46,11 @@ public final class Constants {
 
 
     // Store motor port
-    public static int storeMotor = 8;
+    public static int storeMotor = 0;
 
     
     // Shooter motor port
-    public static int shooterMotor = 9;
+    public static int shooterMotor = 0;
 
 
     // Climber motor ports
@@ -59,7 +59,7 @@ public final class Constants {
 
     //Spinning motor port
 
-    public static int spinningMotor = 1;
+    public static int spinningMotor = 7;
     
 
     // Gamepad1 controller
@@ -72,23 +72,23 @@ public final class Constants {
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
-    public static int shooterButtonPort = 4; // 
+    public static int shooterButtonPort = 0; // 
     public static int reverseShooterButtonPort = 0; //RB?
-    public static int storeButtonPort = 3; // 
+    public static int storeButtonPort = 0; // 
     public static int retractClimberButtonPort = 0; // 
     public static int extendClimberButtonPort = 0; // 
     public static int wheelLeftClimberButtonPort = 0; // 
     public static int wheelRightClimberButtonPort = 0; // 
-    public static int spinnerButtonPort = 0;
+    public static int spinnerButtonPort = 1;
     public static int pistonIntakeExtendPort = 0;
     public static int pistonIntakeRetractPort = 0;
     
 
     // Pneumatic ports
-    public static int climberPneumaticPort1 = 2;
-    public static int climberPneumaticPort2 = 3;
+    public static int climberPneumaticPort1 = 0;
+    public static int climberPneumaticPort2 = 0;
     public static int spinnerPnuematicPort1 = 0;
-    public static int spinnerPnuematicPort2 = 1;
+    public static int spinnerPnuematicPort2 = 0;
     public static int intakePneumaticPort1 = 0;
     public static int intakePneumaticPort2= 0;
     
@@ -106,8 +106,8 @@ public final class Constants {
 
 
     // Encoder
-    public static int leftEncoder = 1;
-    public static int rightEncoder = 6;
+    public static int leftEncoder = 0;
+    public static int rightEncoder = 0;
 
     
     //Camera Port

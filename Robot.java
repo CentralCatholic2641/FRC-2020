@@ -7,29 +7,18 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants;
-import frc.robot.commands.DriveCommand;
-import frc.robot.commands.IntakeCommand;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.XboxController.Button;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.DriveCommand;
-import frc.robot.subsystems.AutoDrivingSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
-//import frc.robot.commands.DriveCommand;
 //import com.kauailabs.navx.frc.AHRS;
 // import edu.wpi.first.wpilibj.Compressor;
 // import edu.wpi.cscore.CvSource;
@@ -45,44 +34,15 @@ import frc.robot.subsystems.StoreSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
 
-  public JoystickButton x = new JoystickButton(gamepad1, 3);
-  
-  public WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(Constants.leftMotor1);
-  public WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(Constants.leftMotor2);
-  public WPI_TalonSRX leftMotor3 = new WPI_TalonSRX(Constants.leftMotor3);
-  
-  //Groups the left motors together
-  public SpeedControllerGroup leftGroup = new SpeedControllerGroup(leftMotor1, leftMotor2, leftMotor3);
-
-  //Delcares right motors
-  public WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(Constants.rightMotor1);
-  public WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(Constants.rightMotor2);
-  public WPI_TalonSRX rightMotor3 = new WPI_TalonSRX(Constants.rightMotor3);
-
-  //Encoder Motor Controller
-
-  //public WPI_TalonSRX leftEncoder = new WPI_TalonSRX(Constants.leftEncoder);
- // public WPI_TalonSRX rightEncoder = new WPI_TalonSRX(Constants.rightEncoder);
-  
-  //Groups the right motors together
-  public SpeedControllerGroup rightGroup = new SpeedControllerGroup(rightMotor1, rightMotor2, rightMotor3);
-
-  //Combines the left and right groups of motors
-  DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
-  // Creates a new driving subsystem and declares a robot container
-  // AHRS ahrs;
   public static RobotContainer objectRobotContainer;
-  //public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
-  //public static AutoDrivingSubsystem objectAutoDrivingSubsystem = new AutoDrivingSubsystem();
+  public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
   public static StoreSubsystem objectStoreSubsystem = new StoreSubsystem();
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
   // public static Compressor compressor = new Compressor(Constants.compressorPort);
-  // public static Object objectDriveDistanceSubsystem;
   // public UsbCamera camera1;
   // public CvSource outputStream1;
 
@@ -101,19 +61,19 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    /*new DriveCommand();
-    // Creates a new robot container
     objectRobotContainer = new RobotContainer();
+    LiveWindow.disableAllTelemetry();
     // SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
-    SmartDashboard.putBoolean("Pressure2", true);
+    //SmartDashboard.putBoolean("Pressure2", true);
     // // SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
     // compressor.start();
-    SmartDashboard.putNumber("Left Encoder Value is: ",
-        Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
-    SmartDashboard.putNumber("Right Encoder Value is: ",
-        Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
+    //SmartDashboard.putNumber("Left Encoder Value is: ",
+        //Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
+    //SmartDashboard.putNumber("Right Encoder Value is: ",
+        //Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
+    
 
-    */
+    
     // We might need to make the camera a subsystem or define it in the robot
     // container
     // Also THis code is somewhat redundant... I am just seeing what is possible
@@ -135,7 +95,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods. This must be called from the
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
-    //CommandScheduler.getInstance().run();
+    CommandScheduler.getInstance().run();
 
   }
 
@@ -158,8 +118,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    //Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
-    //Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
+    Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
+    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
 
   }
 
@@ -167,7 +127,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {    
     // Left 
-    /*
+    
     lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
@@ -181,7 +141,7 @@ public class Robot extends TimedRobot {
     rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
 
-    objectAutoDrivingSubsystem.teleopDrive2(lOutput, lOutput);
+    objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
     System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
 
     SmartDashboard.putNumber("lOutput", lOutput);
@@ -191,8 +151,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("rOutput", rOutput);
     SmartDashboard.putNumber("r-dT", rDistanceTravelled);
     SmartDashboard.putNumber("r-error", rError);
-    */
-    oDrive.tankDrive(.5,.5);
+    
+    
   }
 
   @Override
@@ -211,15 +171,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    //new DriveCommand();
-    oDrive.tankDrive(gamepad1.getRawAxis(Constants.joystickPort),gamepad1.getRawAxis(Constants.joystickPort2));
-    x.whileHeld(new IntakeCommand(Constants.intakeSpeed), true);
+  
+  
   }
 
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
-    //CommandScheduler.getInstance().cancelAll();
+    CommandScheduler.getInstance().cancelAll();
   }
 
   /**

@@ -26,7 +26,7 @@ public class TimeCommand extends CommandBase {
     variableSpeed = speed;
     
     // Adds the driving subsystem
-    //addRequirements(Robot.objectDrivingSubsystem);
+    addRequirements(Robot.objectDrivingSubsystem);
   }
 
   // Called when the command is initially scheduled.

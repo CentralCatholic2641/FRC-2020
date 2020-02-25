@@ -20,8 +20,8 @@ public class StoreSubsystem extends SubsystemBase {
   public StoreSubsystem() {
 
   }
-  public void DriveStoreMotor(double speed){
-    storeMotor.set(speed);
+  public void DriveStoreMotor(){
+    storeMotor.set(0.5);
   }
   @Override
   public void periodic() {

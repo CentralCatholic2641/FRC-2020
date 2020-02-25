@@ -23,8 +23,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
   }
   
-  public void DriveShooterMotor(double speed){
-    shooterMotor.set(speed);
+  public void DriveShooterMotor(){
+    shooterMotor.set(.5);
   }
 
   @Override

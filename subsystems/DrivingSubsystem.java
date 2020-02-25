@@ -40,13 +40,15 @@ public class DrivingSubsystem extends SubsystemBase {
 
   //Combines the left and right groups of motors
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
+  
 
 
   public DrivingSubsystem() {
-
+    
   }
 
   public void teleopDrive(double yMove1, double yMove2) {
+    oDrive.setSafetyEnabled(false);
     //Configures the groups of motors to work with tank drive
     oDrive.tankDrive(yMove1, yMove2);
   }

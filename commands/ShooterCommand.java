@@ -14,12 +14,12 @@ public class ShooterCommand extends CommandBase {
   /**
    * Creates a new ShooterCommand.
    */
-  double power;
+  
 
-  public ShooterCommand(double speed) {
+  public ShooterCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectShooterSubsystem);
-    power = speed;
+    
     
 
   }
@@ -33,13 +33,13 @@ public class ShooterCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.objectShooterSubsystem.DriveShooterMotor(power);
+    Robot.objectShooterSubsystem.DriveShooterMotor();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.objectShooterSubsystem.DriveShooterMotor(0);
+    Robot.objectShooterSubsystem.DriveShooterMotor();
   }
 
   // Returns true when the command should end.
