@@ -32,7 +32,7 @@ public final class Constants {
 
 
     // Intake motor port
-    public static int intakeMotor = 0;
+    public static int intakeMotor = 8;
 
     //Compressor port
     public static int compressorPort = 0;
@@ -46,11 +46,11 @@ public final class Constants {
 
 
     // Store motor port
-    public static int storeMotor = 0;
+    public static int storeMotor = 9;
 
     
     // Shooter motor port
-    public static int shooterMotor = 0;
+    public static int shooterMotor = 7;
 
 
     // Climber motor ports
@@ -72,16 +72,17 @@ public final class Constants {
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
-    public static int shooterButtonPort = 0; // 
+    public static int shooterButtonPort = 3; // 
     public static int reverseShooterButtonPort = 0; //RB?
-    public static int storeButtonPort = 0; // 
+    public static int storeButtonPort = 2; // 
     public static int retractClimberButtonPort = 0; // 
     public static int extendClimberButtonPort = 0; // 
     public static int wheelLeftClimberButtonPort = 0; // 
     public static int wheelRightClimberButtonPort = 0; // 
-    public static int spinnerButtonPort = 1;
+    public static int spinnerButtonPort = 0;
     public static int pistonIntakeExtendPort = 0;
     public static int pistonIntakeRetractPort = 0;
+    public static int intakeButtonPort = 1;
     
 
     // Pneumatic ports

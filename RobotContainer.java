@@ -16,7 +16,6 @@ import frc.robot.commands.ExtendClimberCommand;
 import frc.robot.commands.ExtendIntakeCommand;
 import frc.robot.commands.RetractClimberCommand;
 import frc.robot.commands.RetractIntakeCommand;
-import frc.robot.commands.WheelClimberCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.StoreCommand;
@@ -36,17 +35,15 @@ public class RobotContainer {
   public Joystick gamepad2 = new Joystick(Constants.gamepad2Port);
   public Button xbutton = new JoystickButton(gamepad1, Constants.addNextButtonPort);
 
-  public Button jbutton = new JoystickButton(gamepad1, Constants.pistonIntakeExtendPort);
-  public Button ybutton = new JoystickButton(gamepad2, Constants.pistonIntakeRetractPort);
-  public Button zbutton = new JoystickButton(gamepad2, Constants.storeButtonPort);
-  public Button sbutton = new JoystickButton(gamepad2, Constants.shooterButtonPort);
-  
-  public Button reverseShooterButton = new JoystickButton(gamepad2, Constants.reverseShooterButtonPort);
+  public Button pistonIntakeExtendButton = new JoystickButton(gamepad1, Constants.pistonIntakeExtendPort);
+  public Button pistonIntakeRetractButton = new JoystickButton(gamepad2, Constants.pistonIntakeRetractPort);
+  public Button storeButton = new JoystickButton(gamepad2, Constants.storeButtonPort);
+  public Button shooterButton= new JoystickButton(gamepad2, Constants.shooterButtonPort);
+  public Button intakeButton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
   public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButtonPort);
   public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
   public Button extendClimberButton = new JoystickButton(gamepad2, Constants.extendClimberButtonPort);
-  public Button wheelLeftClimberButton = new JoystickButton(gamepad2, Constants.wheelLeftClimberButtonPort);
-  public Button wheelRightClimberButton = new JoystickButton(gamepad2, Constants.wheelRightClimberButtonPort);
+  
 
   /*
     The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -54,24 +51,23 @@ public class RobotContainer {
   public RobotContainer() {
     
     //Extend and Retract Intake
-    jbutton.whenPressed(new ExtendIntakeCommand(), true);
-    ybutton.whenPressed(new RetractIntakeCommand(), true);
+    pistonIntakeExtendButton.whenPressed(new ExtendIntakeCommand(), true);
+    pistonIntakeRetractButton.whenPressed(new RetractIntakeCommand(), true);
 
     //Fast shooter and conveyor
-    jbutton.whileHeld(new ShooterCommand(), true);
-    sbutton.whileHeld(new StoreCommand(), true);
+    shooterButton.whileHeld(new ShooterCommand(), true);
+    storeButton.whileHeld(new StoreCommand(), true);
 
     //Medium conveyer and intake
-    zbutton.whileHeld(new IntakeCommand(), true);
-    zbutton.whileHeld(new StoreCommand(),true);
+    intakeButton.whileHeld(new IntakeCommand(), true);
+    storeButton.whileHeld(new StoreCommand(),true);
 
 
     spinnerButton.whileHeld(new SpinningCommand(), true);
     retractClimberButton.whileHeld(new RetractClimberCommand(), true);
     extendClimberButton.whileHeld(new ExtendClimberCommand(), true);
-    wheelLeftClimberButton.whileHeld(new WheelClimberCommand(-1), true);
-    wheelRightClimberButton.whileHeld(new WheelClimberCommand(1), true);
     
+
 
     // Configure the button bindings
     configureButtonBindings();

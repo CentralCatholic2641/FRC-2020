@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.XboxController.Button;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.DriveCommand;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -20,7 +21,7 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
 //import com.kauailabs.navx.frc.AHRS;
-// import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Compressor;
 // import edu.wpi.cscore.CvSource;
 // import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSource;
@@ -42,7 +43,7 @@ public class Robot extends TimedRobot {
   public static ShooterSubsystem objectShooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
-  // public static Compressor compressor = new Compressor(Constants.compressorPort);
+  public static Compressor compressor = new Compressor(Constants.compressorPort);
   // public UsbCamera camera1;
   // public CvSource outputStream1;
 
@@ -63,14 +64,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     objectRobotContainer = new RobotContainer();
     LiveWindow.disableAllTelemetry();
-    // SmartDashboard.putNumber("Yaw Axis is: ", ahrs.getAngle());
-    //SmartDashboard.putBoolean("Pressure2", true);
-    // // SmartDashboard.putBoolean("Pressure", compressor.getPressureSwitchValue());
-    // compressor.start();
-    //SmartDashboard.putNumber("Left Encoder Value is: ",
-        //Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
-    //SmartDashboard.putNumber("Right Encoder Value is: ",
-        //Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
+    compressor.start();
+    SmartDashboard.putNumber("Left Encoder Value is: ",
+        Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
+    SmartDashboard.putNumber("Right Encoder Value is: ",
+        Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
     
 
     
@@ -119,15 +117,19 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
-    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
+    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);    
 
   }
 
 
   @Override
   public void autonomousPeriodic() {    
+
+     
+
+    //objectDrivingSubsystem.teleopDrive(.5, .5);
     // Left 
-    
+    /*
     lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
@@ -140,8 +142,10 @@ public class Robot extends TimedRobot {
     rErrorI += rError;
     rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
+    
 
-    objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
+      
+    //objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
     System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
 
     SmartDashboard.putNumber("lOutput", lOutput);
@@ -152,7 +156,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("r-dT", rDistanceTravelled);
     SmartDashboard.putNumber("r-error", rError);
     
-    
+    */
   }
 
   @Override
@@ -164,6 +168,8 @@ public class Robot extends TimedRobot {
     //if (m_autonomousCommand != null) {
       //m_autonomousCommand.cancel();
     //}
+    //objectDrivingSubsystem.teleopDrive(0, 0);
+    
   }
 
   /**
@@ -172,7 +178,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
   
-  
+   
   }
 
   @Override

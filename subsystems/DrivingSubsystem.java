@@ -40,7 +40,6 @@ public class DrivingSubsystem extends SubsystemBase {
 
   //Combines the left and right groups of motors
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
-  
 
 
   public DrivingSubsystem() {

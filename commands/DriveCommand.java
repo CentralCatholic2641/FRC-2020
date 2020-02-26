@@ -40,7 +40,7 @@ public class DriveCommand extends CommandBase {
     SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
     SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
    
-    
+  
     // passes the stick values into teleopdrive
     Robot.objectDrivingSubsystem.teleopDrive(y_stick1, y_stick2);
   }
