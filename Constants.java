@@ -107,8 +107,8 @@ public final class Constants {
 
 
     // Encoder
-    public static int leftEncoder = 0;
-    public static int rightEncoder = 0;
+    public static int leftEncoder = 1;
+    public static int rightEncoder = 4;
 
     
     //Camera Port

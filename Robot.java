@@ -10,10 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj.XboxController.Button;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.DriveCommand;
+import frc.robot.commands.AutoCommand;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -47,7 +48,7 @@ public class Robot extends TimedRobot {
   // public UsbCamera camera1;
   // public CvSource outputStream1;
 
-
+  Command autonomousCommand;
   double c;
   double lDistanceTravelled;
   double lError;
@@ -65,6 +66,7 @@ public class Robot extends TimedRobot {
     objectRobotContainer = new RobotContainer();
     LiveWindow.disableAllTelemetry();
     compressor.start();
+    autonomousCommand = new AutoCommand();
     SmartDashboard.putNumber("Left Encoder Value is: ",
         Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
     SmartDashboard.putNumber("Right Encoder Value is: ",
@@ -117,46 +119,18 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
-    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);    
-
+    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
+    if (autonomousCommand != null){
+      autonomousCommand.execute();
+    }
   }
 
+  
 
-  @Override
+
   public void autonomousPeriodic() {    
-
-     
-
-    //objectDrivingSubsystem.teleopDrive(.5, .5);
-    // Left 
-    /*
-    lDistanceTravelled = -((objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
-    lError = Constants.setpoint - lDistanceTravelled;
-    lErrorI += lError;
-    lErrorI *= .95;
-    lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
+    CommandScheduler.getInstance().run();
     
-    // Right
-    rDistanceTravelled = (objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
-    rError = Constants.setpoint - rDistanceTravelled;
-    rErrorI += rError;
-    rErrorI *= .95;
-    rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
-    
-
-      
-    //objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
-    System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
-
-    SmartDashboard.putNumber("lOutput", lOutput);
-    SmartDashboard.putNumber("l-dT", lDistanceTravelled);
-    SmartDashboard.putNumber("l-error", lError);
-
-    SmartDashboard.putNumber("rOutput", rOutput);
-    SmartDashboard.putNumber("r-dT", rDistanceTravelled);
-    SmartDashboard.putNumber("r-error", rError);
-    
-    */
   }
 
   @Override
@@ -165,10 +139,10 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    //if (m_autonomousCommand != null) {
-      //m_autonomousCommand.cancel();
-    //}
-    //objectDrivingSubsystem.teleopDrive(0, 0);
+    if (autonomousCommand != null) {
+      autonomousCommand.cancel();
+    }
+    
     
   }
 
@@ -184,7 +158,7 @@ public class Robot extends TimedRobot {
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
-    CommandScheduler.getInstance().cancelAll();
+    
   }
 
   /**
