@@ -28,6 +28,7 @@ public class SpinningCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Robot.objectSpinningSubsystem.readColorSensor();
     Robot.objectSpinningSubsystem.DriveSpinningMotor(.25);
   }
 
