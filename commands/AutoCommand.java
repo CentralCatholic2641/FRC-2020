@@ -48,7 +48,7 @@ public class AutoCommand extends CommandBase {
     double rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
     
       
-    Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
+    Robot.objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
     System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
 
     SmartDashboard.putNumber("lOutput", lOutput);
