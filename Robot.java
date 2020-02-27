@@ -21,20 +21,13 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
-//import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.Compressor;
 // import edu.wpi.cscore.CvSource;
 // import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSource;
 //import edu.wpi.first.cameraserver.CameraServer;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the TimedRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.gradle file in the
- * project.
- */
+
 public class Robot extends TimedRobot {
 
   public static RobotContainer objectRobotContainer;
@@ -45,6 +38,7 @@ public class Robot extends TimedRobot {
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
+  
   // public UsbCamera camera1;
   // public CvSource outputStream1;
 
@@ -96,6 +90,7 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    
 
   }
 
