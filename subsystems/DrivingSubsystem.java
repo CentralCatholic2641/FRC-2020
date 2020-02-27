@@ -47,7 +47,7 @@ public class DrivingSubsystem extends SubsystemBase {
   }
 
   public void teleopDrive(double yMove1, double yMove2) {
-    oDrive.setSafetyEnabled(false);
+    //oDrive.setSafetyEnabled(false);
     //Configures the groups of motors to work with tank drive
     oDrive.tankDrive(yMove1, yMove2);
   }

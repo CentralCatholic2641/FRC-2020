@@ -17,11 +17,6 @@ package frc.robot;
  */
 public final class Constants {
 
-    // for timed Robot
-    public static double moveUntilSeconds = .85;
-    public static double moveWithSpeed = .75;
-
-
     // Talon Configuration
 	public static int leftMotor1 = 1;
     public static int leftMotor2 = 2;
@@ -59,7 +54,7 @@ public final class Constants {
 
     //Spinning motor port
 
-    public static int spinningMotor = 7;
+    public static int spinningMotor = 0;
     
 
     // Gamepad1 controller
@@ -96,13 +91,13 @@ public final class Constants {
 
     // PID constants
     public static double kP = 0.001;
-    public static double kI = 0.015;
+    public static double kI = 0.050;
     public static double kD = 0;
     public static double kF = 0;
     public static double wheelDiameter = 0.5;
     public static int percentTolerance = 15;
     public static double oneRotation = 4096;
-    public static double setpoint = 5.0;
+    public static double setpoint = 10.0;
     
 
 

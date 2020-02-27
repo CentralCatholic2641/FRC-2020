@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -21,17 +20,19 @@ public class AutoCommand extends CommandBase {
   public AutoCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectDrivingSubsystem);
-
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+     // Left 
+     
     double lErrorI = 0;
     double lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     double lError = Constants.setpoint - lDistanceTravelled;
@@ -47,18 +48,17 @@ public class AutoCommand extends CommandBase {
     rErrorI *= .95;
     double rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
     
-      
-    Robot.objectDrivingSubsystem.teleopDrive(lOutput, lOutput);
+
+    Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
     System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
 
-    SmartDashboard.putNumber("lOutput", lOutput);
-    SmartDashboard.putNumber("l-dT", lDistanceTravelled);
-    SmartDashboard.putNumber("l-error", lError);
+    // SmartDashboard.putNumber("lOutput", lOutput);
+    // SmartDashboard.putNumber("l-dT", lDistanceTravelled);
+    // SmartDashboard.putNumber("l-error", lError);
 
-    SmartDashboard.putNumber("rOutput", rOutput);
-    SmartDashboard.putNumber("r-dT", rDistanceTravelled);
-    SmartDashboard.putNumber("r-error", rError);
-    
+    // SmartDashboard.putNumber("rOutput", rOutput);
+    // SmartDashboard.putNumber("r-dT", rDistanceTravelled);
+    // SmartDashboard.putNumber("r-error", rError);
   }
 
   // Called once the command ends or is interrupted.

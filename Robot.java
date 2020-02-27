@@ -29,7 +29,7 @@ import edu.wpi.first.wpilibj.Compressor;
 
 
 public class Robot extends TimedRobot {
-
+  Command autoCommand;
   public static RobotContainer objectRobotContainer;
   public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
   public static IntakeSubsystem objectIntakeSubsystem = new IntakeSubsystem();
@@ -42,7 +42,6 @@ public class Robot extends TimedRobot {
   // public UsbCamera camera1;
   // public CvSource outputStream1;
 
-  Command autonomousCommand;
   double c;
   double lDistanceTravelled;
   double lError;
@@ -58,9 +57,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     objectRobotContainer = new RobotContainer();
+    autoCommand = new AutoCommand();
     LiveWindow.disableAllTelemetry();
     compressor.start();
-    autonomousCommand = new AutoCommand();
     SmartDashboard.putNumber("Left Encoder Value is: ",
         Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
     SmartDashboard.putNumber("Right Encoder Value is: ",
@@ -115,15 +114,16 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
     Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
-    if (autonomousCommand != null){
-      autonomousCommand.execute();
-    }
+    if (autoCommand != null) autoCommand.schedule();
+    
+    
+    
   }
 
   
 
 
-  public void autonomousPeriodic() {    
+  public void autonomousPeriodic() {   
     CommandScheduler.getInstance().run();
     
   }
@@ -134,9 +134,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    if (autonomousCommand != null) {
-      autonomousCommand.cancel();
-    }
+    
     
     
   }
