@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.commands.ExtendClimberCommand;
 import frc.robot.commands.ExtendIntakeCommand;
 import frc.robot.commands.RetractClimberCommand;
@@ -33,8 +34,9 @@ public class RobotContainer {
   // Makes a new joystick and button
   public Joystick gamepad1 = new Joystick(Constants.gamepad1Port);
   public Joystick gamepad2 = new Joystick(Constants.gamepad2Port);
-  public Button xbutton = new JoystickButton(gamepad1, Constants.addNextButtonPort);
 
+  public POVButton POVpad = new POVButton(gamepad2, 0);
+  public Button xbutton = new JoystickButton(gamepad1, Constants.addNextButtonPort);
   public Button pistonIntakeExtendButton = new JoystickButton(gamepad2, Constants.pistonIntakeExtendPort);
   public Button pistonIntakeRetractButton = new JoystickButton(gamepad2, Constants.pistonIntakeRetractPort);
   public Button storeButton = new JoystickButton(gamepad2, Constants.storeButtonPort);
@@ -54,8 +56,10 @@ public class RobotContainer {
     pistonIntakeExtendButton.whenPressed(new ExtendIntakeCommand(), true);
     pistonIntakeRetractButton.whenPressed(new RetractIntakeCommand(), true);
 
+    POVpad.whileHeld(new ShooterCommand(), true);
+
     //Fast shooter and conveyor
-    shooterButton.whileHeld(new ShooterCommand(), true);
+    // shooterButton.whileHeld(new ShooterCommand(), true);
     storeButton.whileHeld(new StoreCommand(), true);
 
     //Medium conveyer and intake
