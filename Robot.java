@@ -9,9 +9,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj.XboxController.Button;
-//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.AutoCommand;
 import frc.robot.subsystems.ClimberSubsystem;
@@ -20,11 +21,13 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpinningSubsystem;
 import frc.robot.subsystems.StoreSubsystem;
+import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.Compressor;
 // import edu.wpi.cscore.CvSource;
 // import edu.wpi.cscore.UsbCamera;
 // import edu.wpi.cscore.VideoSource;
 //import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.I2C;
 
 
 public class Robot extends TimedRobot {
@@ -39,6 +42,8 @@ public class Robot extends TimedRobot {
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
   
   // public UsbCamera camera1;
   // public CvSource outputStream1;
@@ -76,6 +81,19 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods. This must be called from the
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
+
+    Color detectedColor = m_colorSensor.getColor();
+    double IR = m_colorSensor.getIR();
+  
+    SmartDashboard.putNumber("Red", detectedColor.red);
+    SmartDashboard.putNumber("Green", detectedColor.green);
+    SmartDashboard.putNumber("Blue", detectedColor.blue);
+    SmartDashboard.putNumber("IR", IR);
+
+    int proximity = m_colorSensor.getProximity();
+    SmartDashboard.putNumber("Proximity", proximity);
+
+
     CommandScheduler.getInstance().run();
     
 
