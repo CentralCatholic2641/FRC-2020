@@ -36,11 +36,11 @@ public class SpinningSubsystem extends SubsystemBase {
   }
 
   public void extendSpinnerMotor(){
-    //spinngingPiston.set(Value.kForward);
+   // spinngingPiston.set(Value.kForward);
   }
 
   public void retractSpinnerMotor(){
-    //spinngingPiston.set(Value.kReverse);
+   // spinngingPiston.set(Value.kReverse);
   }
 
   public void DriveSpinningMotor(double speed){

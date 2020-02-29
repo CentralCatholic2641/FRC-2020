@@ -112,8 +112,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
-    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
+    objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
+    objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
+    CommandScheduler.getInstance().registerSubsystem(objectDrivingSubsystem);
     if (autoCommand != null) autoCommand.schedule();
     
     
@@ -124,6 +125,7 @@ public class Robot extends TimedRobot {
 
 
   public void autonomousPeriodic() {   
+    
     CommandScheduler.getInstance().run();
     
   }

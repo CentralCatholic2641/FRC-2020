@@ -75,8 +75,8 @@ public final class Constants {
     public static int wheelLeftClimberButtonPort = 0; // 
     public static int wheelRightClimberButtonPort = 0; // 
     public static int spinnerButtonPort = 0;
-    public static int pistonIntakeExtendPort = 0;
-    public static int pistonIntakeRetractPort = 0;
+    public static int pistonIntakeExtendPort = 6;
+    public static int pistonIntakeRetractPort = 5;
     public static int intakeButtonPort = 1;
     
 
@@ -85,19 +85,19 @@ public final class Constants {
     public static int climberPneumaticPort2 = 0;
     public static int spinnerPnuematicPort1 = 0;
     public static int spinnerPnuematicPort2 = 0;
-    public static int intakePneumaticPort1 = 0;
-    public static int intakePneumaticPort2= 0;
+    public static int intakePneumaticPort1 = 2;
+    public static int intakePneumaticPort2= 1;
     
 
     // PID constants
-    public static double kP = 0.001;
-    public static double kI = 0.050;
+    public static double kP = 0.1;
+    public static double kI = 0.50;
     public static double kD = 0;
     public static double kF = 0;
     public static double wheelDiameter = 0.5;
     public static int percentTolerance = 15;
     public static double oneRotation = 4096;
-    public static double setpoint = 10.0;
+    public static double setpoint = 6.0;
     
 
 

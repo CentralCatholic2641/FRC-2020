@@ -15,9 +15,9 @@ public class AutoCommand extends CommandBase {
   /**
    * Creates a new AutoCommand.
    */
-  double left;
-  double right;
-  public AutoCommand() {
+  double lOutput;
+  double rOutput;
+    public AutoCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectDrivingSubsystem);
   }
@@ -25,20 +25,12 @@ public class AutoCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
-  }
-
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-     // Left 
-     
     double lErrorI = 0;
     double lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     double lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
     lErrorI *= .95;
-    double lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
+    lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
     
     // Right
     double rErrorI = 0;
@@ -46,11 +38,29 @@ public class AutoCommand extends CommandBase {
     double rError = Constants.setpoint - rDistanceTravelled;
     rErrorI += rError;
     rErrorI *= .95;
-    double rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
-    
-
-    Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
+    rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
     System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
+  }
+
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+    double lErrorI = 0;
+    double lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
+    double lError = Constants.setpoint - lDistanceTravelled;
+    lErrorI += lError;
+    lErrorI *= .95;
+    lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
+    
+    // Right
+    double rErrorI = 0;
+    double rDistanceTravelled = (Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
+    double rError = Constants.setpoint - rDistanceTravelled;
+    rErrorI += rError;
+    rErrorI *= .95;
+    rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
+    System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
+    Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
 
     // SmartDashboard.putNumber("lOutput", lOutput);
     // SmartDashboard.putNumber("l-dT", lDistanceTravelled);

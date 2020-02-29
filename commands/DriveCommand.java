@@ -34,7 +34,7 @@ public class DriveCommand extends CommandBase {
   @Override
   public void execute() {
     // Gets raw axis from each joystick and multiplies it by a constant
-    double y_stick1 = - .75 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort);
+    double y_stick1 = - .78 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort);
     double y_stick2 = - .75 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort2);
     
     SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());

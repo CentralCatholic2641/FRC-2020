@@ -31,7 +31,7 @@ public class ShooterCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.objectShooterSubsystem.DriveShooterMotor(0.5);
+    Robot.objectShooterSubsystem.DriveShooterMotor(0.95);
   }
 
   // Called once the command ends or is interrupted.

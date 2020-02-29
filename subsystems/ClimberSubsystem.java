@@ -27,12 +27,12 @@ public class ClimberSubsystem extends SubsystemBase {
   }
 
   public void RetractClimber() {
-    //climberPiston.set(Value.kReverse);
+   // climberPiston.set(Value.kReverse);
     winchMotor.set(.5);
   }
 
   public void ExtendClimber() {
-    //climberPiston.set(Value.kForward);
+   // climberPiston.set(Value.kForward);
   }
 
   public void StartWheel(float direction) {
