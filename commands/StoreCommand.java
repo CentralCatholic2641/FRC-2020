@@ -11,9 +11,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class StoreCommand extends CommandBase {
-  /**
-   * Creates a new ShooterCommand.
-   */
   
   public StoreCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -21,25 +18,23 @@ public class StoreCommand extends CommandBase {
   
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // Drives the conveyor motor
   @Override
   public void execute() {
     Robot.objectStoreSubsystem.DriveStoreMotor(-0.85);
   }
 
-  // Called once the command ends or is interrupted.
+  // Sets the conveyor motor to zero when the button is released
   @Override
   public void end(boolean interrupted) {
     Robot.objectStoreSubsystem.DriveStoreMotor(0.0);
   }
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;

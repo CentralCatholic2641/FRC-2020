@@ -39,6 +39,7 @@ public class DrivingSubsystem extends SubsystemBase {
   public SpeedControllerGroup rightGroup = new SpeedControllerGroup(rightMotor1, rightMotor2, rightMotor3);
 
   //Combines the left and right groups of motors
+  //CANNOT HAVE MULTIPLE DIFFERENTIAL DRIVES
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
 
 
@@ -47,14 +48,14 @@ public class DrivingSubsystem extends SubsystemBase {
   }
 
   public void teleopDrive(double yMove1, double yMove2) {
-    //oDrive.setSafetyEnabled(false);
     //Configures the groups of motors to work with tank drive
     oDrive.tankDrive(yMove1, yMove2);
   }
 
   @Override
   public void periodic() {
-    // This method will be called once per scheduler run
+    // This defualt command calls a new DriveCommand when the scheduler exits teleop drive 
+    // THIS ALLOWS TELE-OP DRIVE TO WORK, DO NOT DELETE THIS
     setDefaultCommand(new DriveCommand());
   }
 }

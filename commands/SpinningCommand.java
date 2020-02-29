@@ -11,36 +11,32 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class SpinningCommand extends CommandBase {
-  /**
-   * Creates a new spinningCommand.
-   */
+  
   public SpinningCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectSpinningSubsystem);    
   }
 
-  // Called when the command is initially scheduled.
+  // Extends the spinning motor
   @Override
   public void initialize() {
     Robot.objectSpinningSubsystem.extendSpinnerMotor();
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // Drives the spinning motor and reads the color sensor for values
   @Override
   public void execute() {
     Robot.objectSpinningSubsystem.readColorSensor();
     Robot.objectSpinningSubsystem.DriveSpinningMotor(.25);
   }
 
-  // Called once the command ends or is interrupted.
+  // Sets the spinning motor to zero and retracts the motor when the button is released
   @Override
   public void end(boolean interrupted) {
     Robot.objectSpinningSubsystem.retractSpinnerMotor();
     Robot.objectSpinningSubsystem.DriveSpinningMotor(0);
   }
 
-
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;

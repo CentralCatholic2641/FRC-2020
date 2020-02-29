@@ -14,15 +14,15 @@ import frc.robot.Constants;
 
 
 public class ShooterSubsystem extends SubsystemBase {
-  /**
-   * Creates a new ShooterSubsystem.
-   */
+  
+  //Shooter motor declaration
   public WPI_TalonSRX shooterMotor = new WPI_TalonSRX(Constants.shooterMotor);
 
   public ShooterSubsystem() {
 
   }
   
+  //Sets the shooter motor to a specific
   public void DriveShooterMotor(double speed){
     shooterMotor.set(speed);
   }

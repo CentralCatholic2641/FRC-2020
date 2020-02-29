@@ -13,9 +13,7 @@ import frc.robot.Robot;
 
 
 public class IntakeCommand extends CommandBase {
-  /**
-   * Creates a new IntakeCommand.
-   */
+  
   public IntakeCommand(){
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectIntakeSubsystem);
@@ -23,25 +21,24 @@ public class IntakeCommand extends CommandBase {
   
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // Drives the intake motor
   @Override
   public void execute() {
     Robot.objectIntakeSubsystem.DriveIntakeMotor(Constants.intakeSpeed);
     
   }
 
-  // Called once the command ends or is interrupted.
+  // Sets the intake motor to zero when the button is released
   @Override
   public void end(boolean interrupted) {
     Robot.objectIntakeSubsystem.DriveIntakeMotor(0.0);
   }
 
-  // Returns true when the command should end.
+  
   @Override
   public boolean isFinished() {
     return false;

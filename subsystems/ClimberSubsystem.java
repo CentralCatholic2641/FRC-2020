@@ -20,21 +20,24 @@ public class ClimberSubsystem extends SubsystemBase {
 
   public WPI_TalonSRX wheelMotor = new WPI_TalonSRX(Constants.wheelMotor);
   public WPI_TalonSRX winchMotor = new WPI_TalonSRX(Constants.winchMotor);
-  //public DoubleSolenoid climberPiston = new DoubleSolenoid(Constants.climberPneumaticPort1, Constants.climberPneumaticPort2);
+  public DoubleSolenoid climberPiston = new DoubleSolenoid(Constants.climberPneumaticPort1, Constants.climberPneumaticPort2);
 
   public ClimberSubsystem() {
 
   }
 
+  //Retracts the climber using the piston and the winch motor
   public void RetractClimber() {
-   // climberPiston.set(Value.kReverse);
+   climberPiston.set(Value.kReverse);
     winchMotor.set(.5);
   }
 
+  //Extends the climber
   public void ExtendClimber() {
-   // climberPiston.set(Value.kForward);
+   climberPiston.set(Value.kForward);
   }
 
+  //Sets the wheel motor to a specfic speed to move along the bar
   public void StartWheel(float direction) {
     wheelMotor.set(direction);
   }

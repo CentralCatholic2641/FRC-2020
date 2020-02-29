@@ -11,51 +11,43 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
+//THIS FILE CONTAINS AUTONOMOUST CODE. AT THE TIME OF THIS COMMENT, THE PI SYSTEM IS WORKING FINE. IF YOU DO NOT KNOW WHAT YOU ARE DOING, PLEASE FOR THE LOVE OF GOD DO NOT EDIT ANYTHING IN THIS FILE
+//OR ELSE...
+
 public class AutoCommand extends CommandBase {
-  /**
-   * Creates a new AutoCommand.
-   */
+  //Initialize output variables 
   double lOutput;
   double rOutput;
+  double lErrorI = 0;
+  double rErrorI = 0;
+  double lDistanceTravelled;
+  double lError;
+  double rDistanceTravelled;
+  double rError;
+
     public AutoCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectDrivingSubsystem);
   }
 
-  // Called when the command is initially scheduled.
+  //Calculates values 
   @Override
   public void initialize() {
-    double lErrorI = 0;
-    double lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
-    double lError = Constants.setpoint - lDistanceTravelled;
-    lErrorI += lError;
-    lErrorI *= .95;
-    lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
     
-    // Right
-    double rErrorI = 0;
-    double rDistanceTravelled = (Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
-    double rError = Constants.setpoint - rDistanceTravelled;
-    rErrorI += rError;
-    rErrorI *= .95;
-    rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
-    System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // Calculates and sends to teleop drive 
   @Override
   public void execute() {
-    double lErrorI = 0;
-    double lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
-    double lError = Constants.setpoint - lDistanceTravelled;
+    lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
+    lError = Constants.setpoint - lDistanceTravelled;
     lErrorI += lError;
     lErrorI *= .95;
     lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
     
     // Right
-    double rErrorI = 0;
-    double rDistanceTravelled = (Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
-    double rError = Constants.setpoint - rDistanceTravelled;
+    rDistanceTravelled = (Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
+    rError = Constants.setpoint - rDistanceTravelled;
     rErrorI += rError;
     rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
@@ -71,12 +63,12 @@ public class AutoCommand extends CommandBase {
     // SmartDashboard.putNumber("r-error", rError);
   }
 
-  // Called once the command ends or is interrupted.
+  
   @Override
   public void end(boolean interrupted) {
   }
 
-  // Returns true when the command should end.
+  
   @Override
   public boolean isFinished() {
     return false;

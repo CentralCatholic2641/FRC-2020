@@ -40,7 +40,7 @@ public final class Constants {
     public static double fastStore = 0.80;
 
 
-    // Store motor port
+    // Conveyor motor port
     public static int storeMotor = 9;
 
     
@@ -61,14 +61,13 @@ public final class Constants {
     public static int gamepad1Port = 0;
     public static int joystickPort = 1; // left joystick
     public static int joystickPort2 = 5; // right joystick
-    public static int addNextButtonPort = 0; // X button
+    
     
 
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
     public static int shooterButtonPort = 3; // 
-    public static int reverseShooterButtonPort = 0; //RB?
     public static int storeButtonPort = 2; // 
     public static int retractClimberButtonPort = 0; // 
     public static int extendClimberButtonPort = 0; // 

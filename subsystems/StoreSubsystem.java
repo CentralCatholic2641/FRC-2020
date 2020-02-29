@@ -12,14 +12,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class StoreSubsystem extends SubsystemBase {
-  /**
-   * Creates a new ShooterSubsystem.
-   */
+  
+  //New conveyor motor
   public WPI_TalonSRX storeMotor = new WPI_TalonSRX(Constants.storeMotor);
 
   public StoreSubsystem() {
 
   }
+
+  //Sets the conveyor motor to a speciic speed
   public void DriveStoreMotor(double speed){
     storeMotor.set(speed);
   }

@@ -9,7 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj.XboxController.Button;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,6 +28,8 @@ import edu.wpi.first.wpilibj.Compressor;
 
 
 public class Robot extends TimedRobot {
+
+  //Creates new subsytems
   Command autoCommand;
   public static RobotContainer objectRobotContainer;
   public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
@@ -42,28 +43,15 @@ public class Robot extends TimedRobot {
   // public UsbCamera camera1;
   // public CvSource outputStream1;
 
-  double c;
-  double lDistanceTravelled;
-  double lError;
-  double lOutput;
-  double lErrorI = 0;
-
-  double rDistanceTravelled;
-  double rError;
-  double rOutput;
-  double rErrorI = 0;
-
 
   @Override
   public void robotInit() {
+
+    //Creates new robot container, new autonomous command, and starts the compressor
     objectRobotContainer = new RobotContainer();
     autoCommand = new AutoCommand();
     LiveWindow.disableAllTelemetry();
     compressor.start();
-    SmartDashboard.putNumber("Left Encoder Value is: ",
-        Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
-    SmartDashboard.putNumber("Right Encoder Value is: ",
-        Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
     
 
     
@@ -112,6 +100,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+
+    //Sets the encoders to zero and runs the autoCommand 
     objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
     objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
     CommandScheduler.getInstance().registerSubsystem(objectDrivingSubsystem);
@@ -121,29 +111,22 @@ public class Robot extends TimedRobot {
     
   }
 
-  
-
-
   public void autonomousPeriodic() {   
-    
+    //Runs the autoCommand
     CommandScheduler.getInstance().run();
     
   }
 
   @Override
   public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    
-    
-    
+
+    //Turns off the auto command when tele-op is initialized
+    if (autoCommand != null) {
+    autoCommand.cancel();
+    }
   }
 
-  /**
-   * This function is called periodically during operator control.
-   */
+
   @Override
   public void teleopPeriodic() {
   
@@ -152,13 +135,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testInit() {
-    // Cancels all running commands at the start of test mode.
     
   }
 
-  /**
-   * This function is called periodically during test mode.
-   */
+  
   @Override
   public void testPeriodic() {
     

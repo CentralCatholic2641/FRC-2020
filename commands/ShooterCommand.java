@@ -11,36 +11,29 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class ShooterCommand extends CommandBase {
-  /**
-   * Creates a new ShooterCommand.
-   */
   
-
   public ShooterCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectShooterSubsystem);
-  
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
+  //Drives the shooter motor
   @Override
   public void execute() {
     Robot.objectShooterSubsystem.DriveShooterMotor(0.95);
   }
 
-  // Called once the command ends or is interrupted.
+  // Sets the shooter motor to zero when the button is released
   @Override
   public void end(boolean interrupted) {
     Robot.objectShooterSubsystem.DriveShooterMotor(0.0);
   }
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;
