@@ -32,9 +32,9 @@ public class RetractClimberCommand extends CommandBase {
   
   @Override
   public void end(boolean interrupted) {
-    
-
+    Robot.objectClimberSubsystem.StopWinch();
   }
+    
 
   
   @Override

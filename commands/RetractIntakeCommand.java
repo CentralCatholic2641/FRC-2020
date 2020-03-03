@@ -32,6 +32,7 @@ public class RetractIntakeCommand extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
+    
   }
 
   

@@ -6,10 +6,13 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
+import frc.robot.commands.ClimberDriveLeft;
+import frc.robot.commands.ClimberDriveRight;
 import frc.robot.commands.ExtendClimberCommand;
 import frc.robot.commands.ExtendIntakeCommand;
 import frc.robot.commands.RetractClimberCommand;
@@ -31,9 +34,11 @@ public class RobotContainer {
   public Button storeButton = new JoystickButton(gamepad2, Constants.storeButtonPort);
   public Button shooterButton= new JoystickButton(gamepad2, Constants.shooterButtonPort);
   public Button intakeButton = new JoystickButton(gamepad2, Constants.intakeButtonPort);
-  public Button spinnerButton = new JoystickButton(gamepad2, Constants.spinnerButtonPort);
-  public Button retractClimberButton = new JoystickButton(gamepad2, Constants.retractClimberButtonPort);
-  public Button extendClimberButton = new JoystickButton(gamepad2, Constants.extendClimberButtonPort);
+  public POVButton spinnerButton = new POVButton(gamepad2, 45);
+  public POVButton retractClimberButton = new POVButton(gamepad2, 180);
+  public POVButton extendClimberButton = new POVButton(gamepad2, 0);
+  public POVButton climberLeft = new POVButton(gamepad2, 270);
+  public POVButton climberRight = new POVButton(gamepad2, 90);
   
 
   public RobotContainer() {
@@ -41,12 +46,9 @@ public class RobotContainer {
     //Extend and Retract Intake
     pistonIntakeExtendButton.whenPressed(new ExtendIntakeCommand(), true);
     pistonIntakeRetractButton.whenPressed(new RetractIntakeCommand(), true);
-
-    //D-pad button
-    POVpad.whileHeld(new ShooterCommand(), true);
-
+  
     //Fast shooter and conveyor
-    // shooterButton.whileHeld(new ShooterCommand(), true);
+    shooterButton.whileHeld(new ShooterCommand(), true);
     storeButton.whileHeld(new StoreCommand(), true);
 
     //Medium conveyer and intake
@@ -57,6 +59,8 @@ public class RobotContainer {
     spinnerButton.whileHeld(new SpinningCommand(), true);
     retractClimberButton.whileHeld(new RetractClimberCommand(), true);
     extendClimberButton.whileHeld(new ExtendClimberCommand(), true);
+    climberLeft.whileHeld(new ClimberDriveLeft(), true);
+    climberRight.whileHeld(new ClimberDriveRight(), true);
     
 
 

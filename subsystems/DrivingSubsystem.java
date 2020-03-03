@@ -49,7 +49,10 @@ public class DrivingSubsystem extends SubsystemBase {
 
   public void teleopDrive(double yMove1, double yMove2) {
     //Configures the groups of motors to work with tank drive
-    oDrive.tankDrive(yMove1, yMove2);
+    //these are the method parameters
+    //tankDrive(double leftSPeed, double rightSpeed, boolean squaredInputs)
+    //The squared inputs will make the robbot less sensitive at low speeds so you don't get that jolt of acceleration
+    oDrive.tankDrive(yMove1, yMove2, true);
   }
 
   @Override

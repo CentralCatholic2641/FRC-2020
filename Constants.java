@@ -49,12 +49,12 @@ public final class Constants {
 
 
     // Climber motor ports
-    public static int winchMotor = 0;
-    public static int wheelMotor = 0;
+    public static int winchMotor = 10;
+    public static int wheelMotor = 12;
 
     //Spinning motor port
 
-    public static int spinningMotor = 0;
+    public static int spinningMotor = 8;
     
 
     // Gamepad1 controller
@@ -62,30 +62,46 @@ public final class Constants {
     public static int joystickPort = 1; // left joystick
     public static int joystickPort2 = 5; // right joystick
     
-    
+    //It would be helpful to map out the buttons like this and then
+    //just set the rest using these button names
+    //That way when people are adjusting buttons, it is easier
+    //... add whatever to this
+    /*
+    a=;
+    x=;
+    y=;
+    b=;
+    l_1 = ;
+    l_2 = ;
+    r_1 = ;
+    r_2 = ;
+    left_dpad = ;
+    right_dpad = ;
+    up_dpad = ;
+    down_dpad = ;
+
+    */
 
     
     // Gamepad2 controller - Please Comment which port is which
     public static int gamepad2Port = 1;
     public static int shooterButtonPort = 3; // 
-    public static int storeButtonPort = 2; // 
-    public static int retractClimberButtonPort = 0; // 
-    public static int extendClimberButtonPort = 0; // 
+    public static int storeButtonPort = 2; //  
     public static int wheelLeftClimberButtonPort = 0; // 
     public static int wheelRightClimberButtonPort = 0; // 
     public static int spinnerButtonPort = 0;
-    public static int pistonIntakeExtendPort = 6;
-    public static int pistonIntakeRetractPort = 5;
+    public static int pistonIntakeExtendPort = 0;
+    public static int pistonIntakeRetractPort = 0;
     public static int intakeButtonPort = 1;
     
 
     // Pneumatic ports
-    public static int climberPneumaticPort1 = 0;
-    public static int climberPneumaticPort2 = 0;
+    public static int climberPneumaticPort1 = 2;
+    public static int climberPneumaticPort2 = 3;
     public static int spinnerPnuematicPort1 = 0;
-    public static int spinnerPnuematicPort2 = 0;
-    public static int intakePneumaticPort1 = 2;
-    public static int intakePneumaticPort2= 1;
+    public static int spinnerPnuematicPort2 = 1;
+    public static int intakePneumaticPort1 = 0;
+    public static int intakePneumaticPort2= 0;
     
 
     // PID constants

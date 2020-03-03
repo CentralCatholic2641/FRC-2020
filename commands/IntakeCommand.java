@@ -28,7 +28,7 @@ public class IntakeCommand extends CommandBase {
   // Drives the intake motor
   @Override
   public void execute() {
-    Robot.objectIntakeSubsystem.DriveIntakeMotor(Constants.intakeSpeed);
+    Robot.objectIntakeSubsystem.DriveIntakeMotor(-1*Constants.intakeSpeed);
     
   }
 
