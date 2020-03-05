@@ -112,7 +112,7 @@ public final class Constants {
     public static double wheelDiameter = 0.5;
     public static int percentTolerance = 15;
     public static double oneRotation = 4096;
-    public static double setpoint = 6.0;
+    public static double setpoint = 5.0;
     
 
 
