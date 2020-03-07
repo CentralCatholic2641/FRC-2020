@@ -24,10 +24,12 @@ public class AutoCommand extends CommandBase {
   double lError;
   double rDistanceTravelled;
   double rError;
+  double setpoint;
 
-    public AutoCommand() {
+    public AutoCommand(double distance) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectDrivingSubsystem);
+    setpoint = distance;
   }
 
   //Calculates values 
@@ -40,27 +42,18 @@ public class AutoCommand extends CommandBase {
   @Override
   public void execute() {
     lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
-    lError = Constants.setpoint - lDistanceTravelled;
+    lError = setpoint - lDistanceTravelled;
     lErrorI += lError;
     lErrorI *= .95;
     lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
     
     // Right
     rDistanceTravelled = (Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
-    rError = Constants.setpoint - rDistanceTravelled;
+    rError = setpoint - rDistanceTravelled;
     rErrorI += rError;
     rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
-   
-
-    if (lOutput > 0.05 && rOutput > 0.05){
-      System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
-      Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
-    }
-    else{
-      System.out.println("This is getting called");
-      new TurnAround();
-    }
+  
     
     //If the output is greater than 5 percent, continue doing what is was doing, is it is not, call turn left
     
@@ -69,12 +62,20 @@ public class AutoCommand extends CommandBase {
   
   @Override
   public void end(boolean interrupted) {
-    new TurnAround();
+  
   }
 
   
   @Override
   public boolean isFinished() {
-    return false;
+    if (lOutput > 0.05 && rOutput > 0.05){
+      System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
+      Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
+      return false;
+    }
+    else{
+      System.out.println("This is getting called");
+      return true;
+    }
   }
 }

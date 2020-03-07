@@ -105,14 +105,13 @@ public final class Constants {
     
 
     // PID constants
-    public static double kP = 0.1;
-    public static double kI = 0.50;
+    public static double kP = 0.025;
+    public static double kI = 0.5;
     public static double kD = 0;
     public static double kF = 0;
     public static double wheelDiameter = 0.5;
     public static int percentTolerance = 15;
     public static double oneRotation = 4096;
-    public static double setpoint = 3.0;
     
 
 

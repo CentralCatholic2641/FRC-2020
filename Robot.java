@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 //import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.AutoCommand;
+import frc.robot.commands.AutoCommandGroup;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DrivingSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -54,7 +54,7 @@ public class Robot extends TimedRobot {
 
     //Creates new robot container, new autonomous command, and starts the compressor
     objectRobotContainer = new RobotContainer();
-    autoCommand = new AutoCommand();
+    autoCommand = new AutoCommandGroup();
     LiveWindow.disableAllTelemetry();
     compressor.start();
     

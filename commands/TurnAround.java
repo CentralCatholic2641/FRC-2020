@@ -19,9 +19,10 @@ public class TurnAround extends CommandBase {
   AHRS ahrs;
   double desiredAngle;
 
-  public TurnAround() {
+  public TurnAround(double angle) {
     // Use addRequirements() here to declare subsystem dependencies.
       addRequirements(Robot.objectDrivingSubsystem);
+      desiredAngle = angle;
   }
 
   // Called when the command is initially scheduled.
@@ -36,12 +37,16 @@ public class TurnAround extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println(ahrs.getYaw());
+    double current  = ahrs.getYaw();
+    while (current < desiredAngle){
+      Robot.objectDrivingSubsystem.teleopDrive(-.25, .25);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Robot.objectDrivingSubsystem.teleopDrive(0, 0);
   }
 
   // Returns true when the command should end.
