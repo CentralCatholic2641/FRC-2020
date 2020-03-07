@@ -25,14 +25,12 @@ public class SpinningSubsystem extends SubsystemBase {
   public DoubleSolenoid spinngingPiston = new DoubleSolenoid(Constants.spinnerPnuematicPort1, Constants.spinnerPnuematicPort2);
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
-  String convertedColor;
-  Color rgbColor;
 
   //Reads the color sensor values and prints them to the terminal
   public void readColorSensor(){
     Color detectedColor = m_colorSensor.getColor();
-    convertedColor = detectedColor.toString();
-    rgbColor = hex2Rgb(detectedColor.toString());
+    String convertedColor = detectedColor.toString();
+    Color rgbColor = hex2Rgb(detectedColor.toString());
     System.out.println("Detected: " + detectedColor);
     System.out.println("Converted Color: " + convertedColor);
     System.out.println("RGB: " + rgbColor);
