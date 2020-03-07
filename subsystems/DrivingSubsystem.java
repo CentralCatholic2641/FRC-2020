@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -42,9 +43,12 @@ public class DrivingSubsystem extends SubsystemBase {
   //CANNOT HAVE MULTIPLE DIFFERENTIAL DRIVES
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
 
+  public AHRS ahrs;
+ 
+
 
   public DrivingSubsystem() {
-    
+    ahrs = new AHRS();
   }
 
   public void teleopDrive(double yMove1, double yMove2) {

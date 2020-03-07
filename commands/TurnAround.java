@@ -16,7 +16,6 @@ public class TurnAround extends CommandBase {
   /**
    * Creates a new TurnAround.
    */
-  AHRS ahrs;
   double desiredAngle;
 
   public TurnAround(double angle) {
@@ -28,18 +27,20 @@ public class TurnAround extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("This is getting called part 2");
-    ahrs = new AHRS();
-    ahrs.zeroYaw();
-    System.out.println(ahrs.getYaw());
+    Robot.objectDrivingSubsystem.ahrs.zeroYaw();
+    System.out.println(Robot.objectDrivingSubsystem.ahrs.getYaw());
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double current  = ahrs.getYaw();
-    while (current < desiredAngle){
-      Robot.objectDrivingSubsystem.teleopDrive(-.25, .25);
+    double current  = Robot.objectDrivingSubsystem.ahrs.getYaw();
+    System.out.println(current);
+    if(current < desiredAngle){
+      Robot.objectDrivingSubsystem.teleopDrive(-.4, .4);
+    }
+    else{
+      end(true);
     }
   }
 

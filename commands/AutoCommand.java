@@ -35,7 +35,8 @@ public class AutoCommand extends CommandBase {
   //Calculates values 
   @Override
   public void initialize() {
-    
+    Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
+    Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
   }
 
   // Calculates and sends to teleop drive 
@@ -53,9 +54,6 @@ public class AutoCommand extends CommandBase {
     rErrorI += rError;
     rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
-  
-    
-    //If the output is greater than 5 percent, continue doing what is was doing, is it is not, call turn left
     
   }
    
@@ -68,13 +66,15 @@ public class AutoCommand extends CommandBase {
   
   @Override
   public boolean isFinished() {
-    if (lOutput > 0.05 && rOutput > 0.05){
+    if (lOutput > 0.01 || rOutput > 0.01){
+      double newlOutput = lOutput / 10;
+      double newrOutput = rOutput /10;
       System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
-      Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
+      Robot.objectDrivingSubsystem.teleopDrive(newlOutput, newrOutput);
       return false;
     }
     else{
-      System.out.println("This is getting called");
+      Robot.objectDrivingSubsystem.teleopDrive(0, 0);
       return true;
     }
   }

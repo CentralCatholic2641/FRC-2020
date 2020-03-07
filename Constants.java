@@ -105,7 +105,7 @@ public final class Constants {
     
 
     // PID constants
-    public static double kP = 0.025;
+    public static double kP = 0.1;
     public static double kI = 0.5;
     public static double kD = 0;
     public static double kF = 0;
