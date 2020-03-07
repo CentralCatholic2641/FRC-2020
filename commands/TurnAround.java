@@ -6,44 +6,42 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.Robot;
 
-public class DriveCommand extends CommandBase {
-  
-  public DriveCommand() {
+public class TurnAround extends CommandBase {
+  /**
+   * Creates a new TurnAround.
+   */
+  AHRS ahrs;
+  double desiredAngle;
+
+  public TurnAround() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.objectDrivingSubsystem);
-    
+      addRequirements(Robot.objectDrivingSubsystem);
   }
 
-  
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+    System.out.println("This is getting called part 2");
+    ahrs = new AHRS();
+    ahrs.zeroYaw();
+    System.out.println(ahrs.getYaw());
   }
 
-
+  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // Gets raw axis from each joystick and multiplies it by a constant
-    double y_stick1 = - .95 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort);
-    double y_stick2 = - .92 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort2);
-    
-    SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
-    SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
-   
-  
-    // passes the stick values into teleopdrive
-    Robot.objectDrivingSubsystem.teleopDrive(y_stick1, y_stick2);
+    System.out.println(ahrs.getYaw());
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
   }
 
   // Returns true when the command should end.

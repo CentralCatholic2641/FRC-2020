@@ -51,50 +51,25 @@ public class AutoCommand extends CommandBase {
     rErrorI += rError;
     rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
-    System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
+   
 
-
+    if (lOutput > 0.05 && rOutput > 0.05){
+      System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
+      Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
+    }
+    else{
+      System.out.println("This is getting called");
+      new TurnAround();
+    }
+    
     //If the output is greater than 5 percent, continue doing what is was doing, is it is not, call turn left
-    if (lOutput> 0.05){
-      if (rOutput > 0.05){
-        Robot.objectDrivingSubsystem.teleopDrive(lOutput, rOutput);
-      }
-        else{
-      turnAround();
-    }
-  }
-    // SmartDashboard.putNumber("lOutput", lOutput);
-    // SmartDashboard.putNumber("l-dT", lDistanceTravelled);
-    // SmartDashboard.putNumber("l-error", lError);
-
-    // SmartDashboard.putNumber("rOutput", rOutput);
-    // SmartDashboard.putNumber("r-dT", rDistanceTravelled);
-    // SmartDashboard.putNumber("r-error", rError);
-  }
-
-
-  public  void turnAround(){
-
-    //double leftEncoder = Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition();
-    //double rightEncoder = Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition();
-    double distanceToTravel = 12288;
-
-    while(Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() < distanceToTravel){
-      Robot.objectDrivingSubsystem.teleopDrive(.25, -.25);
-    }
-
     
-    
-    //while encoder value is less than x rotations, turn at this speed
-    //when ended, call next movement
-
   }
-
-
+   
   
   @Override
   public void end(boolean interrupted) {
-    
+    new TurnAround();
   }
 
   
