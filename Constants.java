@@ -55,6 +55,7 @@ public final class Constants {
     //Spinning motor port
 
     public static int spinningMotor = 8;
+    public static int spinningEncoder = 0;
     
 
     // Gamepad1 controller

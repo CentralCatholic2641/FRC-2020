@@ -26,6 +26,7 @@ public class SpinningSubsystem extends SubsystemBase {
   //New spinning motor, spinning piston, and a new color sensor 
   public WPI_TalonSRX spinningMotor = new WPI_TalonSRX(Constants.spinningMotor);
   public DoubleSolenoid spinngingPiston = new DoubleSolenoid(Constants.spinnerPnuematicPort1, Constants.spinnerPnuematicPort2);
+  public WPI_TalonSRX spinningEncoder = new WPI_TalonSRX(Constants.spinningEncoder);
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
   private final ColorMatch m_colorMatcher = new ColorMatch();
@@ -102,5 +103,8 @@ public class SpinningSubsystem extends SubsystemBase {
   public void DriveSpinningMotor(double speed){
     spinningMotor.set(speed);
   }
+  
+
+
   
 }
