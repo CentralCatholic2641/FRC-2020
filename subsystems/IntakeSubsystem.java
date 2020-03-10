@@ -18,7 +18,7 @@ public class IntakeSubsystem extends SubsystemBase {
   
    //Intake motor and intake piston
     public WPI_TalonSRX intakeMotor = new WPI_TalonSRX(Constants.intakeMotor);
-    //public DoubleSolenoid intakePiston = new DoubleSolenoid(Constants.intakePneumaticPort1, Constants.intakePneumaticPort2);
+    public DoubleSolenoid intakePiston = new DoubleSolenoid(Constants.intakePneumaticPort1, Constants.intakePneumaticPort2);
 
    public IntakeSubsystem() {
   }
@@ -30,12 +30,12 @@ public class IntakeSubsystem extends SubsystemBase {
 
   //Extends the intake
   public void extendIntake(){
-    //intakePiston.set(Value.kForward);
+    intakePiston.set(Value.kForward);
 
   }
   //Retracts the intake
   public void retractIntake(){
-    //intakePiston.set(Value.kReverse);
+    intakePiston.set(Value.kReverse);
   }
 
   @Override
