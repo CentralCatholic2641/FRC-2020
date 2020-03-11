@@ -28,9 +28,11 @@ public class DriveCommand extends CommandBase {
 
   @Override
   public void execute() {
+    double joystick1 = Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort);
+    double joystick2 = Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort2);
     // Gets raw axis from each joystick and multiplies it by a constant
-    double y_stick1 = - .95 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort);
-    double y_stick2 = - .92 * Robot.objectRobotContainer.gamepad1.getRawAxis(Constants.joystickPort2);
+    double y_stick1 = - .95 * joystick1;
+    double y_stick2 = - .92 * joystick2;
     
     SmartDashboard.putNumber("Left Encoder Value is: ", Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition());
     SmartDashboard.putNumber("Right Encoder Value is: ", Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition());
@@ -38,6 +40,11 @@ public class DriveCommand extends CommandBase {
   
     // passes the stick values into teleopdrive
     Robot.objectDrivingSubsystem.teleopDrive(y_stick1, y_stick2);
+    
+    //Resets the Yaw when joysticks are forward
+    if (joystick1 >= 1 && joystick2 >= 1){
+      Robot.objectDrivingSubsystem.ahrs.zeroYaw();
+    }
   }
 
   // Called once the command ends or is interrupted.
