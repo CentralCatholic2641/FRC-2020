@@ -1,0 +1,11 @@
+[
+  {
+    "name": "FRC2020 (in project FRC2020)",
+    "file": "/Users/aidanliddy/Dev/FRC2020/build/libs/FRC2020.jar",
+    "extensions": [
+      "/Users/aidanliddy/Dev/FRC2020/build/tmp/expandedArchives/halsim_gui-2020.2.2-osxx86-64.zip_1ad08ae2af1e48b55eb81983cc56ca10/osx/x86-64/shared/libhalsim_gui.dylib"
+    ],
+    "librarydir": "/Users/aidanliddy/Dev/FRC2020/build/tmp/jniExtractDir",
+    "mainclass": "frc.robot.Main"
+  }
+]
