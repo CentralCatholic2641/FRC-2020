@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class SpinningCommand extends CommandBase {
-  
+
   public SpinningCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.objectSpinningSubsystem);    
+    addRequirements(Robot.objectSpinningSubsystem);
   }
 
   // Extends the spinning motor
@@ -30,7 +30,8 @@ public class SpinningCommand extends CommandBase {
     Robot.objectSpinningSubsystem.DriveSpinningMotor(.25);
   }
 
-  // Sets the spinning motor to zero and retracts the motor when the button is released
+  // Sets the spinning motor to zero and retracts the motor when the button is
+  // released
   @Override
   public void end(boolean interrupted) {
     Robot.objectSpinningSubsystem.retractSpinnerMotor();

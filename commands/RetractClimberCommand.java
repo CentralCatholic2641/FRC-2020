@@ -11,13 +11,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class RetractClimberCommand extends CommandBase {
-  
+
   public RetractClimberCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectClimberSubsystem);
   }
 
-  
   @Override
   public void initialize() {
 
@@ -29,14 +28,11 @@ public class RetractClimberCommand extends CommandBase {
     Robot.objectClimberSubsystem.RetractClimber();
   }
 
-  
   @Override
   public void end(boolean interrupted) {
     Robot.objectClimberSubsystem.StopWinch();
   }
-    
 
-  
   @Override
   public boolean isFinished() {
     return false;

@@ -25,11 +25,9 @@ import edu.wpi.first.wpilibj.Compressor;
 // import edu.wpi.cscore.VideoSource;
 //import edu.wpi.first.cameraserver.CameraServer;
 
-
-
 public class Robot extends TimedRobot {
 
-  //Creates new subsytems
+  // Creates new subsytems
   Command autoCommand;
   public static RobotContainer objectRobotContainer;
   public static DrivingSubsystem objectDrivingSubsystem = new DrivingSubsystem();
@@ -39,23 +37,20 @@ public class Robot extends TimedRobot {
   public static ClimberSubsystem objectClimberSubsystem = new ClimberSubsystem();
   public static SpinningSubsystem objectSpinningSubsystem = new SpinningSubsystem();
   public static Compressor compressor = new Compressor(Constants.compressorPort);
-  
-  
+
   // public UsbCamera camera1;
   // public CvSource outputStream1;
-
 
   @Override
   public void robotInit() {
 
-    //Creates new robot container, new autonomous command, and starts the compressor
+    // Creates new robot container, new autonomous command, and starts the
+    // compressor
     objectRobotContainer = new RobotContainer();
     autoCommand = new AutoCommandGroup();
     LiveWindow.disableAllTelemetry();
     compressor.start();
-    
 
-    
     // We might need to make the camera a subsystem or define it in the robot
     // container
     // Also THis code is somewhat redundant... I am just seeing what is possible
@@ -78,7 +73,6 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-    
 
   }
 
@@ -102,44 +96,40 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
 
-    //Sets the encoders to zero and runs the autoCommand 
+    // Sets the encoders to zero and runs the autoCommand
     CommandScheduler.getInstance().registerSubsystem(objectDrivingSubsystem);
-    if (autoCommand != null) autoCommand.schedule();
-    
-    
-    
+    if (autoCommand != null)
+      autoCommand.schedule();
+
   }
 
-  public void autonomousPeriodic() {   
-    //Runs the autoCommand
+  public void autonomousPeriodic() {
+    // Runs the autoCommand
     CommandScheduler.getInstance().run();
-    
+
   }
 
   @Override
   public void teleopInit() {
 
-    //Turns off the auto command when tele-op is initialized
+    // Turns off the auto command when tele-op is initialized
     if (autoCommand != null) {
-    autoCommand.cancel();
+      autoCommand.cancel();
     }
   }
 
-
   @Override
   public void teleopPeriodic() {
-  
-   
+
   }
 
   @Override
   public void testInit() {
-    
+
   }
 
-  
   @Override
   public void testPeriodic() {
-    
+
   }
 }

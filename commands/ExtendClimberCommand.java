@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class ExtendClimberCommand extends CommandBase {
-  
+
   public ExtendClimberCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectClimberSubsystem);
@@ -19,16 +19,15 @@ public class ExtendClimberCommand extends CommandBase {
 
   @Override
   public void initialize() {
-    
+
   }
 
-  //Extends climber
+  // Extends climber
   @Override
   public void execute() {
     Robot.objectClimberSubsystem.ExtendClimber();
 
   }
-
 
   @Override
   public void end(boolean interrupted) {

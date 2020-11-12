@@ -15,7 +15,7 @@ import frc.robot.Robot;
 //OR ELSE...
 
 public class AutoCommand extends CommandBase {
-  //Initialize output variables 
+  // Initialize output variables
   double lOutput;
   double rOutput;
   double lErrorI = 0;
@@ -26,54 +26,53 @@ public class AutoCommand extends CommandBase {
   double rError;
   double setpoint;
 
-    public AutoCommand(double distance) {
+  public AutoCommand(double distance) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectDrivingSubsystem);
     setpoint = distance;
   }
 
-  //Calculates values 
+  // Calculates values
   @Override
   public void initialize() {
     Robot.objectDrivingSubsystem.leftEncoder.setSelectedSensorPosition(0);
     Robot.objectDrivingSubsystem.rightEncoder.setSelectedSensorPosition(0);
   }
 
-  // Calculates and sends to teleop drive 
+  // Calculates and sends to teleop drive
   @Override
   public void execute() {
-    lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
+    lDistanceTravelled = -((Robot.objectDrivingSubsystem.leftEncoder.getSelectedSensorPosition()
+        / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter));
     lError = setpoint - lDistanceTravelled;
     lErrorI += lError;
     lErrorI *= .95;
     lOutput = Constants.kP * lError + (Constants.kI * lErrorI);
-    
+
     // Right
-    rDistanceTravelled = (Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation) * (Math.PI * Constants.wheelDiameter);
+    rDistanceTravelled = (Robot.objectDrivingSubsystem.rightEncoder.getSelectedSensorPosition() / Constants.oneRotation)
+        * (Math.PI * Constants.wheelDiameter);
     rError = setpoint - rDistanceTravelled;
     rErrorI += rError;
     rErrorI *= .95;
     rOutput = Constants.kP * rError + (Constants.kI * rErrorI);
-    
-  }
-   
-  
-  @Override
-  public void end(boolean interrupted) {
-  
+
   }
 
-  
+  @Override
+  public void end(boolean interrupted) {
+
+  }
+
   @Override
   public boolean isFinished() {
-    if (lOutput > 0.01 || rOutput > 0.01){
+    if (lOutput > 0.01 || rOutput > 0.01) {
       double newlOutput = lOutput / 10;
-      double newrOutput = rOutput /10;
+      double newrOutput = rOutput / 10;
       System.out.println("Left output: " + lOutput + ", Right output: " + rOutput);
       Robot.objectDrivingSubsystem.teleopDrive(newlOutput, newrOutput);
       return false;
-    }
-    else{
+    } else {
       Robot.objectDrivingSubsystem.teleopDrive(0, 0);
       return true;
     }

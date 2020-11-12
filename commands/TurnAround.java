@@ -7,7 +7,6 @@
 
 package frc.robot.commands;
 
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
@@ -19,8 +18,8 @@ public class TurnAround extends CommandBase {
 
   public TurnAround(double angle) {
     // Use addRequirements() here to declare subsystem dependencies.
-      addRequirements(Robot.objectDrivingSubsystem);
-      desiredAngle = angle;
+    addRequirements(Robot.objectDrivingSubsystem);
+    desiredAngle = angle;
   }
 
   // Called when the command is initially scheduled.
@@ -33,12 +32,11 @@ public class TurnAround extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double current  = Robot.objectDrivingSubsystem.ahrs.getYaw();
+    double current = Robot.objectDrivingSubsystem.ahrs.getYaw();
     System.out.println(current);
-    if(current < desiredAngle){
+    if (current < desiredAngle) {
       Robot.objectDrivingSubsystem.teleopDrive(-.4, .4);
-    }
-    else{
+    } else {
       end(true);
     }
   }

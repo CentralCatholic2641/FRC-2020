@@ -11,13 +11,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class RetractIntakeCommand extends CommandBase {
-  
+
   public RetractIntakeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectIntakeSubsystem);
   }
 
-  
   @Override
   public void initialize() {
   }
@@ -28,14 +27,11 @@ public class RetractIntakeCommand extends CommandBase {
     Robot.objectIntakeSubsystem.retractIntake();
   }
 
-
-
   @Override
   public void end(boolean interrupted) {
-    
+
   }
 
-  
   @Override
   public boolean isFinished() {
     return false;

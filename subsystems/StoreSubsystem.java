@@ -12,18 +12,19 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class StoreSubsystem extends SubsystemBase {
-  
-  //New conveyor motor
+
+  // New conveyor motor
   public WPI_TalonSRX storeMotor = new WPI_TalonSRX(Constants.storeMotor);
 
   public StoreSubsystem() {
 
   }
 
-  //Sets the conveyor motor to a speciic speed
-  public void DriveStoreMotor(double speed){
+  // Sets the conveyor motor to a speciic speed
+  public void DriveStoreMotor(double speed) {
     storeMotor.set(speed);
   }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

@@ -11,16 +11,16 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class StoreCommand extends CommandBase {
-  
+
   public StoreCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectStoreSubsystem);
-  
+
   }
 
   @Override
   public void initialize() {
-    
+
   }
 
   // Drives the conveyor motor

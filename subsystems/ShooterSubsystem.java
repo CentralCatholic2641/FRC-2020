@@ -11,19 +11,17 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-
-
 public class ShooterSubsystem extends SubsystemBase {
-  
-  //Shooter motor declaration
+
+  // Shooter motor declaration
   public WPI_TalonSRX shooterMotor = new WPI_TalonSRX(Constants.shooterMotor);
 
   public ShooterSubsystem() {
 
   }
-  
-  //Sets the shooter motor to a specific
-  public void DriveShooterMotor(double speed){
+
+  // Sets the shooter motor to a specific
+  public void DriveShooterMotor(double speed) {
     shooterMotor.set(speed);
   }
 

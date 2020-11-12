@@ -17,51 +17,51 @@ import frc.robot.Constants;
 import frc.robot.commands.DriveCommand;
 
 public class DrivingSubsystem extends SubsystemBase {
-  
-  //Declares left motors 
+
+  // Declares left motors
   public WPI_TalonSRX leftMotor1 = new WPI_TalonSRX(Constants.leftMotor1);
   public WPI_TalonSRX leftMotor2 = new WPI_TalonSRX(Constants.leftMotor2);
   public WPI_TalonSRX leftMotor3 = new WPI_TalonSRX(Constants.leftMotor3);
-  
-  //Groups the left motors together
+
+  // Groups the left motors together
   public SpeedControllerGroup leftGroup = new SpeedControllerGroup(leftMotor1, leftMotor2, leftMotor3);
 
-  //Delcares right motors
+  // Delcares right motors
   public WPI_TalonSRX rightMotor1 = new WPI_TalonSRX(Constants.rightMotor1);
   public WPI_TalonSRX rightMotor2 = new WPI_TalonSRX(Constants.rightMotor2);
   public WPI_TalonSRX rightMotor3 = new WPI_TalonSRX(Constants.rightMotor3);
 
-  //Encoder Motor Controller
+  // Encoder Motor Controller
 
   public WPI_TalonSRX leftEncoder = new WPI_TalonSRX(Constants.leftEncoder);
   public WPI_TalonSRX rightEncoder = new WPI_TalonSRX(Constants.rightEncoder);
-  
-  //Groups the right motors together
+
+  // Groups the right motors together
   public SpeedControllerGroup rightGroup = new SpeedControllerGroup(rightMotor1, rightMotor2, rightMotor3);
 
-  //Combines the left and right groups of motors
-  //CANNOT HAVE MULTIPLE DIFFERENTIAL DRIVES
+  // Combines the left and right groups of motors
+  // CANNOT HAVE MULTIPLE DIFFERENTIAL DRIVES
   DifferentialDrive oDrive = new DifferentialDrive(leftGroup, rightGroup);
 
   public AHRS ahrs;
- 
-
 
   public DrivingSubsystem() {
     ahrs = new AHRS();
   }
 
   public void teleopDrive(double yMove1, double yMove2) {
-    //Configures the groups of motors to work with tank drive
-    //these are the method parameters
-    //tankDrive(double leftSPeed, double rightSpeed, boolean squaredInputs)
-    //The squared inputs will make the robbot less sensitive at low speeds so you don't get that jolt of acceleration
+    // Configures the groups of motors to work with tank drive
+    // these are the method parameters
+    // tankDrive(double leftSPeed, double rightSpeed, boolean squaredInputs)
+    // The squared inputs will make the robbot less sensitive at low speeds so you
+    // don't get that jolt of acceleration
     oDrive.tankDrive(yMove1, yMove2, true);
   }
 
   @Override
   public void periodic() {
-    // This defualt command calls a new DriveCommand when the scheduler exits teleop drive 
+    // This defualt command calls a new DriveCommand when the scheduler exits teleop
+    // drive
     // THIS ALLOWS TELE-OP DRIVE TO WORK, DO NOT DELETE THIS
     setDefaultCommand(new DriveCommand());
   }

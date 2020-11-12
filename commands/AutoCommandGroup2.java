@@ -20,13 +20,7 @@ public class AutoCommandGroup2 extends SequentialCommandGroup {
   public AutoCommandGroup2() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-    new SequentialCommandGroup(
-      new AutoCommand(3.0),
-      new TurnAround(90),
-      new ParallelCommandGroup(
-          new StoreCommand(),
-          new ShooterCommand()
-      )
-    );
+    new SequentialCommandGroup(new AutoCommand(3.0), new TurnAround(90),
+        new ParallelCommandGroup(new StoreCommand(), new ShooterCommand()));
   }
 }

@@ -11,13 +11,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class ExtendIntakeCommand extends CommandBase {
-  
+
   public ExtendIntakeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectIntakeSubsystem);
   }
 
-  
   @Override
   public void initialize() {
   }
@@ -32,7 +31,6 @@ public class ExtendIntakeCommand extends CommandBase {
   public void end(boolean interrupted) {
   }
 
- 
   @Override
   public boolean isFinished() {
     return false;

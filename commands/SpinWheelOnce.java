@@ -28,17 +28,14 @@ public class SpinWheelOnce extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double nextColorEncoderValue = 4096;//Just a placeholder till we can figure out the real value
+    double nextColorEncoderValue = 4096;// Just a placeholder till we can figure out the real value
     double current = Robot.objectSpinningSubsystem.spinningEncoder.getSelectedSensorPosition();
-    if (current < nextColorEncoderValue){
+    if (current < nextColorEncoderValue) {
       Robot.objectSpinningSubsystem.DriveSpinningMotor(0.25);
-    }
-    else{
+    } else {
       end(true);
     }
   }
-
-  
 
   // Called once the command ends or is interrupted.
   @Override

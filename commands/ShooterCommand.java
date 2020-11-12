@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class ShooterCommand extends CommandBase {
-  
+
   public ShooterCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectShooterSubsystem);
@@ -19,10 +19,10 @@ public class ShooterCommand extends CommandBase {
 
   @Override
   public void initialize() {
-    
+
   }
 
-  //Drives the shooter motor
+  // Drives the shooter motor
   @Override
   public void execute() {
     Robot.objectShooterSubsystem.DriveShooterMotor(0.95);

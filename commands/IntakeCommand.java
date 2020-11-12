@@ -11,14 +11,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Robot;
 
-
 public class IntakeCommand extends CommandBase {
-  
-  public IntakeCommand(){
+
+  public IntakeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.objectIntakeSubsystem);
-    
-  
+
   }
 
   @Override
@@ -28,8 +26,8 @@ public class IntakeCommand extends CommandBase {
   // Drives the intake motor
   @Override
   public void execute() {
-    Robot.objectIntakeSubsystem.DriveIntakeMotor(-1*Constants.intakeSpeed);
-    
+    Robot.objectIntakeSubsystem.DriveIntakeMotor(-1 * Constants.intakeSpeed);
+
   }
 
   // Sets the intake motor to zero when the button is released
@@ -38,7 +36,6 @@ public class IntakeCommand extends CommandBase {
     Robot.objectIntakeSubsystem.DriveIntakeMotor(0.0);
   }
 
-  
   @Override
   public boolean isFinished() {
     return false;
